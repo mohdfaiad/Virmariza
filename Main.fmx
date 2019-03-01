@@ -1,0 +1,480 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  Caption = 'Form56'
+  ClientHeight = 439
+  ClientWidth = 768
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
+  object TabControl1: TTabControl
+    Touch.GestureManager = GestureManager1
+    OnGesture = GestureDone
+    Align = Client
+    FullSize = True
+    Size.Width = 768.000000000000000000
+    Size.Height = 439.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 1
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      768s
+      390s
+      768s
+      390s
+      768s
+      390s
+      768s
+      390s)
+    object TabItem1: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 192.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemfavorites'
+      TabOrder = 0
+      Text = 'Art'#237'culos'
+      ExplicitSize.cx = 101.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object StringGrid2: TStringGrid
+        Align = Bottom
+        CanFocus = True
+        ClipChildren = True
+        Position.Y = 104.000000000000000000
+        Size.Width = 768.000000000000000000
+        Size.Height = 286.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, Header, HeaderClick, AutoDisplacement]
+        OnCellClick = StringGrid2CellClick
+        Viewport.Width = 768.000000000000000000
+        Viewport.Height = 286.000000000000000000
+      end
+      object Layout2: TLayout
+        Align = Top
+        Size.Width = 768.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object Label5: TLabel
+          Align = Left
+          Size.Width = 225.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Seleccione una linea'
+          TabOrder = 0
+        end
+        object ComboBoxLinea: TComboBox
+          Align = Right
+          Position.X = 718.000000000000000000
+          Size.Width = 50.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          OnChange = ComboBoxLineaChange
+        end
+      end
+    end
+    object TabItem2: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 192.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemcontacts'
+      TabOrder = 0
+      Text = 'Pintura'
+      ExplicitSize.cx = 102.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object LayoutIngresar: TLayout
+        Align = Top
+        Position.Y = 32.000000000000000000
+        Size.Width = 768.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object EditFolio: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 2
+          KeyboardType = DecimalNumberPad
+          Position.X = 190.000000000000000000
+          Position.Y = 9.000000000000000000
+          Size.Width = 97.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Folio'
+        end
+        object EditPrecio: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 1
+          KeyboardType = DecimalNumberPad
+          Position.X = 350.000000000000000000
+          Position.Y = 9.000000000000000000
+          Size.Width = 97.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Precio'
+        end
+        object editCantidad: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 0
+          Text = '1'
+          Position.X = 529.000000000000000000
+          Position.Y = 9.000000000000000000
+          Size.Width = 97.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object btnIngresar: TSpeedButton
+          Align = Right
+          Position.X = 624.000000000000000000
+          Position.Y = 1.000000000000000000
+          Size.Width = 144.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Ingresar'
+        end
+        object Label1: TLabel
+          Align = Left
+          Position.X = 141.000000000000000000
+          Size.Width = 49.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Folio'
+          TabOrder = 4
+        end
+        object Label2: TLabel
+          Align = Left
+          Position.X = 287.000000000000000000
+          Size.Width = 63.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Precio'
+          TabOrder = 5
+        end
+        object Cantidad: TLabel
+          Align = Left
+          Position.X = 447.000000000000000000
+          Size.Width = 82.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Cantidad'
+          TabOrder = 6
+        end
+        object DateEdit2: TDateEdit
+          Date = 43516.000000000000000000
+          Align = Left
+          Margins.Right = 20.000000000000000000
+          Position.Y = 9.000000000000000000
+          Size.Width = 121.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 7
+        end
+      end
+      object StringGrid1: TStringGrid
+        Align = Bottom
+        CanFocus = True
+        ClipChildren = True
+        Position.Y = 137.000000000000000000
+        Size.Width = 768.000000000000000000
+        Size.Height = 253.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Viewport.Width = 768.000000000000000000
+        Viewport.Height = 253.000000000000000000
+      end
+      object Layout1: TLayout
+        Align = Top
+        Position.Y = 82.000000000000000000
+        Size.Width = 768.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        object EditDesc: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 0
+          Position.Y = 9.000000000000000000
+          Size.Width = 473.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Ingrese descripcion o informacion del articulo (Opcional)'
+        end
+        object Label3: TLabel
+          Align = Left
+          Position.X = 473.000000000000000000
+          Size.Width = 82.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Subtotal:'
+          TabOrder = 2
+        end
+        object Label4: TLabel
+          Align = Left
+          Position.X = 555.000000000000000000
+          Size.Width = 82.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Total:'
+          TabOrder = 1
+        end
+      end
+      object ComboEmpleado: TComboBox
+        Align = Top
+        Size.Width = 768.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+      end
+    end
+    object TabItem3: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 192.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemsearch'
+      TabOrder = 0
+      Text = 'Reparacion'
+      ExplicitSize.cx = 101.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object ToolBar4: TToolBar
+        Size.Width = 768.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object lblTitle4: TLabel
+          Align = Contents
+          Size.Width = 768.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'toollabel'
+          TextSettings.HorzAlign = Center
+          Text = 'Title'
+        end
+      end
+    end
+    object TabItem4: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 192.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitembookmarks'
+      TabOrder = 0
+      Text = 'Configuracion'
+      ExplicitSize.cx = 99.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object btnLinea: TSpeedButton
+        Align = Top
+        Size.Width = 768.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Lineas'
+        OnClick = btnLineaClick
+      end
+      object btnEmpleado: TSpeedButton
+        Align = Top
+        Position.Y = 96.000000000000000000
+        Size.Width = 768.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Empleados'
+      end
+      object btnArticulos: TSpeedButton
+        Align = Top
+        Position.Y = 48.000000000000000000
+        Size.Width = 768.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Articulos'
+        OnClick = btnArticulosClick
+      end
+      object DateEdit1: TDateEdit
+        Date = 43515.000000000000000000
+        Align = Top
+        Position.Y = 144.000000000000000000
+        Size.Width = 768.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+      end
+      object Button1: TButton
+        Align = Top
+        Position.Y = 176.000000000000000000
+        Size.Width = 768.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        Text = 'Button1'
+        OnClick = Button1Click
+      end
+    end
+  end
+  object TimerPresentacion: TTimer
+    OnTimer = TimerPresentacionTimer
+    Left = 568
+    Top = 248
+  end
+  object GestureManager1: TGestureManager
+    Sensitivity = 80.000000000000000000
+    Left = 104
+    Top = 1
+    GestureData = <
+      item
+        Control = TabControl1
+        Collection = <
+          item
+            GestureID = sgiLeft
+          end
+          item
+            GestureID = sgiRight
+          end>
+      end>
+  end
+  object ActionList1: TActionList
+    Left = 32
+    object NextTabAction1: TNextTabAction
+      Category = 'Tab'
+    end
+    object PreviousTabAction1: TPreviousTabAction
+      Category = 'Tab'
+    end
+  end
+  object Conexion: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\Users\Carlos Leonardo\Desktop\Virmariza\BD\Virmariza' +
+        '.s3db'
+      'DriverID=SQLite')
+    LoginPrompt = False
+    AfterConnect = ConexionAfterConnect
+    BeforeConnect = ConexionBeforeConnect
+    Left = 704
+    Top = 224
+  end
+  object FDQueryBuscar: TFDQuery
+    Connection = Conexion
+    Left = 640
+    Top = 304
+  end
+  object FDQueryInsertar: TFDQuery
+    Connection = Conexion
+    Left = 704
+    Top = 160
+  end
+  object FDQueryActualizar: TFDQuery
+    Connection = Conexion
+    Left = 704
+    Top = 304
+  end
+  object FdMemArt: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 568
+    Top = 168
+    object FdMemArtID: TIntegerField
+      FieldName = 'ID'
+    end
+    object FdMemArtNombre: TStringField
+      FieldName = 'Nombre'
+    end
+    object FdMemArtUnidadMedida: TStringField
+      FieldName = 'Unidad Medida'
+    end
+    object FdMemArtCosto: TStringField
+      FieldName = 'Costo'
+    end
+    object FdMemArtPrecio: TStringField
+      FieldName = 'Precio'
+    end
+    object FdMemArtMayoreo: TStringField
+      FieldName = 'Mayoreo'
+    end
+    object FdMemArtBolero: TStringField
+      FieldName = 'Bolero'
+    end
+    object FdMemArtEspecial: TStringField
+      FieldName = 'Especial'
+    end
+    object FdMemArtP_Precio: TStringField
+      FieldName = 'P_Precio'
+    end
+    object FdMemArtP_Mayoreo: TStringField
+      FieldName = 'P_Mayoreo'
+    end
+    object FdMemArtP_Bolero: TStringField
+      FieldName = 'P_Bolero'
+    end
+    object FdMemArtP_Especial: TStringField
+      FieldName = 'P_Especial'
+    end
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkGridToDataSourceBindSourceDB12: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGrid2
+      Columns = <
+        item
+          MemberName = 'ID'
+          ReadOnly = True
+          Width = 50
+        end
+        item
+          MemberName = 'Nombre'
+          ReadOnly = True
+          Width = 400
+        end
+        item
+          MemberName = 'Unidad Medida'
+          ReadOnly = True
+          Width = 128
+        end
+        item
+          MemberName = 'Precio'
+          ReadOnly = True
+        end
+        item
+          MemberName = 'Mayoreo'
+          ReadOnly = True
+        end
+        item
+          MemberName = 'Bolero'
+          ReadOnly = True
+        end>
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FdMemArt
+    ScopeMappings = <>
+    Left = 576
+    Top = 96
+  end
+end

@@ -1,0 +1,97 @@
+Paso 1:
+Modificar el archivo "AndroidManifest.template.xml", mi archivo quedó así, 
+donde la parte nueva esta entre las etiquetas "<receiver" al final de el archivo:
+
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BEGIN_INCLUDE(manifest) -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="%package%"
+        android:versionCode="%versionCode%"
+        android:versionName="%versionName%"
+        android:installLocation="%installLocation%">
+
+    <!-- This is the platform API where NativeActivity was introduced. -->
+    <uses-sdk android:minSdkVersion="%minSdkVersion%" android:targetSdkVersion="%targetSdkVersion%" />
+<%uses-permission%>
+    <uses-feature android:glEsVersion="0x00020000" android:required="True"/>
+    <application android:persistent="%persistent%" 
+        android:restoreAnyVersion="%restoreAnyVersion%" 
+        android:label="%label%" 
+        android:debuggable="%debuggable%" 
+        android:largeHeap="%largeHeap%"
+        android:icon="%icon%"
+        android:theme="%theme%"
+        android:hardwareAccelerated="%hardwareAccelerated%">
+
+<%application-meta-data%>
+		<%services%>
+        <!-- Our activity is a subclass of the built-in NativeActivity framework class.
+             This will take care of integrating with our NDK code. -->
+        <activity android:name="com.embarcadero.firemonkey.FMXNativeActivity"
+                android:label="%activityLabel%"
+                android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+                android:launchMode="singleTask">
+            <!-- Tell NativeActivity the name of our .so -->
+            <meta-data android:name="android.app.lib_name"
+                android:value="%libNameValue%" />
+            <intent-filter>  
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> 
+        </activity>
+		
+        <%activity%>
+        <%receivers%>
+		
+		<receiver android:name="com.dannywind.delphi.BootReceiver"
+			android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+			<intent-filter>
+			<action android:name="android.intent.action.BOOT_COMPLETED" />
+			<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</receiver>
+		
+    </application>
+</manifest>
+<!-- END_INCLUDE(manifest) -->
+
+Paso 2: Activar el permiso "Received boot completed" (Prohect / options / Uses permissions).
+
+Paso 3: Crear el archivo "BootReceiver.java" dentro del proyecto (crear los siguientes directorios) 
+java/scr/com/dannywind/delphi y guardarlo dentro de la carpeta delphi con el siguiente codigo dentro:
+
+package com.dannywind.delphi;
+
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.Context;
+
+public class BootReceiver extends BroadcastReceiver
+{
+@Override
+	public void onReceive(Context context, Intent intent)
+	{
+	Intent launchintent = new Intent();
+	launchintent.setClassName(context, "com.embarcadero.firemonkey.FMXNativeActivity");
+	launchintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	context.startActivity(launchintent);
+	}
+}
+
+Paso 4: Ejecutar el archivo "Build.bat" que debe estar dentro de la carpeta java (Editarlo 
+y cambiar la ruta de tu android de ser necesario). Ejecutar dando doble clic y este creará 
+el archivo "java/output/jar/test_classes.jar".
+
+Paso 5: Agregar el archivo al proyecto a travez del administrador de proyectos (Project Manager), 
+elige la plataforma «Android», "Bibliotecas o Libraries", clic derecho "Add" o "Agregar".
+
+Compilar y probar =)
+
+
+
+
+
+
+
+
+

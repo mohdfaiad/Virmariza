@@ -1,0 +1,1 @@
+Errores leves corregidos, cambios visuales a la unidad de editar inventario, Eliminadas variables inutilizadas

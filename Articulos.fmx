@@ -1,0 +1,215 @@
+object fArticulos: TfArticulos
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 467
+  ClientWidth = 651
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object ToolBar1: TToolBar
+    Size.Width = 651.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+  end
+  object Line1: TLine
+    Align = Top
+    LineType = Diagonal
+    Position.Y = 48.000000000000000000
+    Size.Width = 651.000000000000000000
+    Size.Height = 1.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Layout1: TLayout
+    Align = Top
+    Position.Y = 49.000000000000000000
+    Size.Width = 651.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object editId: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Left
+      TabOrder = 0
+      KeyboardType = NumberPad
+      Position.Y = 4.000000000000000000
+      Size.Width = 321.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Buscar articulo por ID'
+    end
+    object BtnBuscar: TButton
+      Align = Right
+      Position.X = 416.000000000000000000
+      Size.Width = 235.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Buscar'
+      OnClick = BtnBuscarClick
+    end
+  end
+  object EditNombre: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Top
+    TabOrder = 3
+    Position.Y = 89.000000000000000000
+    Size.Width = 651.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'Nombre'
+  end
+  object Layout2: TLayout
+    Align = Top
+    Position.Y = 153.000000000000000000
+    Size.Width = 651.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object EditCantidad: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Left
+      TabOrder = 0
+      Size.Width = 225.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Unidad/Cantidad'
+    end
+    object EditCosto: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Center
+      TabOrder = 1
+      KeyboardType = DecimalNumberPad
+      Size.Width = 197.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Costo'
+    end
+    object EditPrecio: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Right
+      TabOrder = 2
+      KeyboardType = DecimalNumberPad
+      Position.X = 450.000000000000000000
+      Size.Width = 201.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Precio al publico'
+    end
+  end
+  object Layout3: TLayout
+    Align = Top
+    Position.Y = 186.000000000000000000
+    Size.Width = 651.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object EditBolero: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Left
+      TabOrder = 0
+      KeyboardType = DecimalNumberPad
+      Position.Y = 4.000000000000000000
+      Size.Width = 184.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Precio de bolero'
+    end
+    object EditPrecioMayoreo: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Center
+      TabOrder = 1
+      KeyboardType = DecimalNumberPad
+      Size.Width = 145.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Precio mayoreo'
+    end
+    object EditPrecioEspecial: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Right
+      TabOrder = 2
+      KeyboardType = DecimalNumberPad
+      Position.X = 496.000000000000000000
+      Position.Y = 4.000000000000000000
+      Size.Width = 155.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Precio especial'
+    end
+  end
+  object Layout4: TLayout
+    Align = Top
+    Position.Y = 226.000000000000000000
+    Size.Width = 651.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    object btnBorrar: TButton
+      Align = Left
+      Size.Width = 97.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Borrar'
+      OnClick = btnBorrarClick
+    end
+    object btnActualizar: TButton
+      Align = Left
+      Position.X = 97.000000000000000000
+      Size.Width = 103.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Actualizar'
+      OnClick = btnActualizarClick
+    end
+    object BtnPorcentaje: TButton
+      Align = Left
+      Position.X = 200.000000000000000000
+      Size.Width = 192.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Verificar porcentaje'
+      OnClick = BtnPorcentajeClick
+    end
+    object BtnInsertar: TButton
+      Align = Left
+      Position.X = 392.000000000000000000
+      Size.Width = 103.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Insertar'
+      OnClick = BtnInsertarClick
+    end
+  end
+  object Layout5: TLayout
+    Align = Top
+    Position.Y = 121.000000000000000000
+    Size.Width = 651.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    object ComboBoxLinea: TComboBox
+      Align = Right
+      Size.Width = 651.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      OnChange = ComboBoxLineaChange
+    end
+    object Label1: TLabel
+      Align = Left
+      Size.Width = 177.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Seleccione una linea'
+      TabOrder = 1
+    end
+  end
+end

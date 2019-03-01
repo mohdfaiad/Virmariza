@@ -1,0 +1,188 @@
+data/ClientModuleUnit1.pas.i
+data/Menu.vlb.i
+data/Librerias_Android/FGX.Graphics.pas.i
+data/Librerias_Android/FGX.BitBtn.pas.i
+data/InventariosFisicos.identcache.i
+data/InventarioFisico.dproj.local.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.DataBlock.pas.i
+data/InventariosFisicos.deployproj.i
+data/InventarioFisico.stat.i
+data/LecturaCamara.pas.i
+data/Menu.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Detector/ZXing.QrCode.Internal.FinderPattern.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.Datamatrix.Internal.Decoder.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.ResultPointImplementation.pas.i
+data/LecturaCamara.fmx.i
+data/ConfigCliente.vlb.i
+data/Librerias_Android/FGX.Toasts.Android.pas.i
+data/Librerias_Android/FGX.VirtualKeyboard.pas.i
+data/Librerias_Android/FGX.ProgressDialog.Android.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.ReadResult.pas.i
+data/MainActivity.fmx.i
+data/ConfigCliente.NmXhdpiPh.fmx.i
+data/Librerias_Escaner_Camara/Classes/Filtering/ZXing.GlobalHistogramBinarizer.pas.i
+data/MainActivity.fmx.d
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.Datamatrix.Internal.DataBlock.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Detector/ZXing.QrCode.Internal.AlignmentPatternImplementation.pas.i
+data/Menu.NmXhdpiPh.fmx.i
+data/Librerias_Escaner_Camara/Classes/Filtering/ZXing.PlanarYUVLuminanceSource.pas.i
+data/ClientModuleUnit1.dfm.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.Version.pas.i
+data/Librerias_Android/FGX.Toasts.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.Common.DetectorResult.pas.i
+data/Librerias_Android/FGX.Asserts.pas.i
+data/ConfigCliente.fmx.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.Common.BitArrayImplementation.pas.i
+data/ConfigCliente.fmx.d
+data/Librerias_Android/FGX.FlipView.Sliding.pas.i
+data/ClientClassesUnit1.pas.i
+data/Librerias_Android/FGX.ActionSheet.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.DefaultGridSampler.pas.i
+data/Librerias_Android/FGX.Colors.Presets.pas.i
+data/Librerias_Android/FGX.Consts.pas.i
+data/Presentacion.LgXhdpiPh.fmx.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Detector/ZXing.QrCode.Internal.FinderPatternFinder.pas.i
+data/Librerias_Android/fgx.dpk.i
+data/Main.pas.i
+data/Menu.NmXhdpiPh.fmx.d
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.ITFReader.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.ResultPoint.pas.i
+data/Librerias_Android/FGX.Items.pas.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.EAN8Reader.pas.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.UPCEANExtension2Support.pas.i
+data/Usuario.NmXhdpiPh.fmx.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.UPCEANReader.pas.i
+data/BDsqlite/Colectora.s3db.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.QRCodeDecoderMetaData.pas.i
+data/Librerias_Android/FGX.FlipView.Presentation.pas.i
+data/Librerias_Android/AndroidApi.ProgressDialog.pas.i
+data/Librerias_Android/fgxResource.rc.i
+data/Usuario.NmXhdpiPh.fmx.d
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.Common.BitArray.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ReedSolomon/ZXing.Common.ReedSolomon.ReedSolomonDecoder.pas.i
+data/Librerias_Android/FGX.LinkedLabel.Android.pas.i
+data/Usuario.fmx.i
+data/Menu.fmx.d
+data/Usuario.fmx.d
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Detector/ZXing.QrCode.Internal.AlignmentPattern.pas.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.EAN13Reader.pas.i
+data/EnviarInventario.vlb.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXIng.ByteSegments.pas.i
+data/Librerias_Android/fgx.dproj.i
+data/Main.fmx.i
+data/Librerias_Escaner_Camara/Classes/Common/ReedSolomon/ZXing.Common.ReedSolomon.GenericGF.pas.i
+data/Librerias_Android/FGX.ApplicationEvents.pas.i
+data/Librerias_Escaner_Camara/Classes/Filtering/ZXing.BaseLuminanceSource.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.Datamatrix.Internal.Version.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.DecoderResult.pas.i
+data/Colectora.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.BitMatrixParser.pas.i
+data/InventariosFisicos.dproj.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.Decoder.pas.i
+data/EditarInventario.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.Helpers.pas.i
+data/EditarInventario.vlb.i
+data/MainActivity.pas.i
+data/Librerias_Android/FGX.ProgressDialog.Types.pas.i
+data/Presentacion.fmx.d
+data/Librerias_Android/FGX.ActionSheet.Types.pas.i
+data/Presentacion.fmx.i
+data/AndroidManifest.template.xml.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.Common.GridSampler.pas.i
+data/MainActivity.vlb.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/ZXing.QrCode.QRCodeReader.pas.i
+data/Librerias_Android/FGX.Helpers.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.BitSource.pas.i
+data/Librerias_Android/FGX.Toolbar.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.ErrorCorrectionLevel.pas.i
+data/Presentacion.pas.i
+data/EnviarInventario.fmx.i
+data/Librerias_Android/FGX.ColorsPanel.pas.i
+data/Configuracion.fmx.i
+data/Configuracion.fmx.d
+data/Librerias_Escaner_Camara/Classes/Common/Detector/ZXing.Common.Detector.MathUtils.pas.i
+data/Librerias_Android/FGX.Types.pas.i
+data/Librerias_Escaner_Camara/Classes/Filtering/ZXing.Binarizer.pas.i
+data/Librerias_Android/Androidapi.JNI.Toasts.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Detector/ZXing.QrCode.Internal.AlignmentPatternFinder.pas.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.EANManufacturerOrgSupport.pas.i
+data/Librerias_Android/FGX.Types.StateValue.pas.i
+data/EditarInventario.NmXhdpiPh.fmx.d
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.Datamatrix.Internal.DecodedBitStreamParser.pas.i
+data/EditarInventario.NmXhdpiPh.fmx.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Detector/ZXing.QrCode.Internal.Detector.pas.i
+data/InventarioFisico.dpr.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.Reader.pas.i
+data/InventariosFisicos.dproj.local.i
+data/Colectora.NmXhdpiPh.fmx.d
+data/Librerias_Android/fgx.stat.i
+data/EditarInventario.fmx.d
+data/Usuario.pas.i
+data/EditarInventario.fmx.i
+data/ConfigCliente.pas.i
+data/Librerias_Android/FGX.ProgressDialog.Win.pas.i
+data/Librerias_Android/FGX.VirtualKeyboard.Types.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.Common.PerspectiveTransform.pas.i
+data/Colectora.NmXhdpiPh.fmx.i
+data/Librerias_Android/FGX.Helpers.Android.pas.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.OneDReader.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.StringUtils.pas.i
+data/InventarioFisico.dproj.i
+data/ProjectGroup4.groupproj.i
+data/Audios/beep_025sec.3gp.i
+data/Librerias_Android/FGX.Images.Types.pas.i
+data/EnviarInventario.pas.i
+data/Librerias_Android/FGX.ActionSheet.Android.pas.i
+data/Librerias_Escaner_Camara/Classes/Filtering/ZXing.InvertedLuminanceSource.pas.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.UPCEANExtension5Support.pas.i
+data/Librerias_Android/fgx.dres.i
+data/Colectora.vlb.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.Mode.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.DecodedBitStreamParser.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.CharacterSetECI.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.EncodeHintType.pas.i
+data/Librerias_Android/FGX.LinkedLabel.pas.i
+data/Librerias_Android/FGX.FlipView.Types.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Detector/ZXing.QrCode.Internal.FinderPatternImplementation.pas.i
+data/Usuario.vlb.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.Datamatrix.Internal.BitMatrixParser.pas.i
+data/Librerias_Escaner_Camara/Classes/Filtering/ZXing.HybridBinarizer.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.BarcodeFormat.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/ZXing.Datamatrix.DataMatrixReader.pas.i
+data/Librerias_Android/FGX.ProgressDialog.pas.i
+data/Menu.fmx.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.UPCEANExtensionSupport.pas.i
+data/Librerias_Android/FGX.FlipView.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Detector/ZXing.Datamatrix.Internal.Detector.pas.i
+data/Librerias_Android/FGX.GradientEdit.pas.i
+data/Presentacion.vlb.i
+data/Librerias_Escaner_Camara/Classes/Filtering/ZXing.RGBLuminanceSource.pas.i
+data/Librerias_Escaner_Camara/myZXingPackage.res.i
+data/Configuracion.pas.i
+data/Librerias_Android/FGX.FlipView.Effect.pas.i
+data/Colectora.fmx.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.MultiFormatReader.pas.i
+data/Librerias_Escaner_Camara/Classes/Filtering/ZXing.BinaryBitmap.pas.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.UPCAReader.pas.i
+data/Colectora.fmx.d
+data/Librerias_Android/FGX.Animations.pas.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.UPCEReader.pas.i
+data/Librerias_Escaner_Camara/Classes/ZXing.ScanManager.pas.i
+data/Presentacion.NmXhdpiPh.fmx.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.FormatInformation.pas.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Detector/ZXing.QrCode.Internal.FinderPatternInfo.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/Detector/ZXing.Common.Detector.WhiteRectangleDetector.pas.i
+data/Presentacion.NmXhdpiPh.fmx.d
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.Code39Reader.pas.i
+data/InventariosFisicos.res.i
+data/Librerias_Escaner_Camara/Classes/2D Barcodes/Decoder/ZXing.QrCode.Internal.DataMask.pas.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.Common.BitMatrix.pas.i
+data/InventariosFisicos.dpr.i
+data/InventariosFisicos.stat.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.ResultMetadataType.pas.i
+data/InventarioFisico.deployproj.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.Code128Reader.pas.i
+data/Librerias_Escaner_Camara/Classes/1D Barcodes/ZXing.OneD.Code93Reader.pas.i
+data/InventarioFisico.res.i
+data/Librerias_Escaner_Camara/Classes/Common/ZXing.DecodeHintType.pas.i
+data/Librerias_Escaner_Camara/Classes/Filtering/ZXing.LuminanceSource.pas.i

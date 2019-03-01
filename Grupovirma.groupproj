@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{54B42E6D-2926-44C1-8BB7-5C9214280F60}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Virmariza.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="inv_fisicos\InventarioFisico.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Virmariza">
+        <MSBuild Projects="Virmariza.dproj"/>
+    </Target>
+    <Target Name="Virmariza:Clean">
+        <MSBuild Projects="Virmariza.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Virmariza:Make">
+        <MSBuild Projects="Virmariza.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="InventarioFisico">
+        <MSBuild Projects="inv_fisicos\InventarioFisico.dproj"/>
+    </Target>
+    <Target Name="InventarioFisico:Clean">
+        <MSBuild Projects="inv_fisicos\InventarioFisico.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="InventarioFisico:Make">
+        <MSBuild Projects="inv_fisicos\InventarioFisico.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Virmariza;InventarioFisico"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Virmariza:Clean;InventarioFisico:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Virmariza:Make;InventarioFisico:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,42 @@
+TABLA Pintura_Det 
+ID int
+Folio int
+Precio double/Text
+Descripcion text
+time Hora
+
+TABLA Pintura
+ID int
+Fecha Datetime
+Empleado 
+
+TABLA Reparacion_Det 
+ID int
+Folio int
+Precio double/Text
+Descripcion text
+time Hora
+	
+TABLA Reparacion
+ID int
+Fecha Datetime
+Empleado
+
+TABLA Lineas
+Nombre text
+
+TABLA Articulos
+Nombre text
+Linea text
+Cantidad text
+Costo double
+Publico double
+Mayoreo double
+Bolero double
+Precio_Especial double
+Porcentaje Publico double
+Porcentaje Mayore double
+Porcentaje Bolero double
+Porcentaje Especial double
+
+

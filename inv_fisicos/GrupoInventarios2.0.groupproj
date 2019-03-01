@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7FF8F559-BFA5-47C8-89C8-C88F1B7A2B46}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="InventarioFisico.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="P:\serververificador\DSDelphi10Server\ServidorExperto.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="InventarioFisico">
+        <MSBuild Projects="InventarioFisico.dproj"/>
+    </Target>
+    <Target Name="InventarioFisico:Clean">
+        <MSBuild Projects="InventarioFisico.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="InventarioFisico:Make">
+        <MSBuild Projects="InventarioFisico.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ServidorExperto">
+        <MSBuild Projects="P:\serververificador\DSDelphi10Server\ServidorExperto.dproj"/>
+    </Target>
+    <Target Name="ServidorExperto:Clean">
+        <MSBuild Projects="P:\serververificador\DSDelphi10Server\ServidorExperto.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ServidorExperto:Make">
+        <MSBuild Projects="P:\serververificador\DSDelphi10Server\ServidorExperto.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="InventarioFisico;ServidorExperto"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="InventarioFisico:Clean;ServidorExperto:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="InventarioFisico:Make;ServidorExperto:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

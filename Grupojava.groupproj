@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{AD5EE285-8D86-443A-A93D-F686815D8379}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Virmariza.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="P:\verificadorand\VerificadorExperto.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Virmariza">
+        <MSBuild Projects="Virmariza.dproj"/>
+    </Target>
+    <Target Name="Virmariza:Clean">
+        <MSBuild Projects="Virmariza.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Virmariza:Make">
+        <MSBuild Projects="Virmariza.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VerificadorExperto">
+        <MSBuild Projects="P:\verificadorand\VerificadorExperto.dproj"/>
+    </Target>
+    <Target Name="VerificadorExperto:Clean">
+        <MSBuild Projects="P:\verificadorand\VerificadorExperto.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VerificadorExperto:Make">
+        <MSBuild Projects="P:\verificadorand\VerificadorExperto.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Virmariza;VerificadorExperto"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Virmariza:Clean;VerificadorExperto:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Virmariza:Make;VerificadorExperto:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,124 @@
+object Lineas: TLineas
+  Left = 0
+  Top = 0
+  Caption = 'fLineas'
+  ClientHeight = 402
+  ClientWidth = 728
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object LayoutLinea: TLayout
+    Align = Top
+    Margins.Bottom = 10.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 728.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object Layout1: TLayout
+      Align = Top
+      Position.Y = 32.000000000000000000
+      Size.Width = 728.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object EditLinea: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        TabOrder = 0
+        Size.Width = 360.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'Ingrese el nombre de la linea'
+      end
+      object GuardarLinea: TButton
+        Align = Right
+        Position.X = 545.000000000000000000
+        Size.Width = 183.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Guardar'
+        OnClick = GuardarLineaClick
+      end
+      object BtnBorrarLinea: TButton
+        Align = Right
+        Position.X = 360.000000000000000000
+        Size.Width = 185.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Borrar'
+        OnClick = BtnBorrarLineaClick
+      end
+    end
+    object ComboBox1: TComboBox
+      Align = Top
+      Size.Width = 728.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+  end
+  object ToolBar1: TToolBar
+    Align = MostTop
+    Size.Width = 728.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+  end
+  object LayoutEmp: TLayout
+    Align = Top
+    Position.Y = 131.000000000000000000
+    Size.Width = 728.000000000000000000
+    Size.Height = 72.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Layout3: TLayout
+      Align = Top
+      Position.Y = 32.000000000000000000
+      Size.Width = 728.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object EditEmp: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        TabOrder = 0
+        Size.Width = 368.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'Ingrese el nombre del empleado'
+      end
+      object GuardarEmp: TButton
+        Align = Right
+        Position.X = 545.000000000000000000
+        Size.Width = 183.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Guardar'
+        OnClick = GuardarLineaClick
+      end
+      object BorrarEmp: TButton
+        Align = Right
+        Position.X = 368.000000000000000000
+        Size.Width = 177.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Borrar'
+        OnClick = BtnBorrarLineaClick
+      end
+    end
+    object ComboBox2: TComboBox
+      Align = Top
+      Size.Width = 728.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+  end
+end
