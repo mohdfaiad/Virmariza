@@ -1,2 +1,0 @@
-.\assets\internal\beep_025sec.3gp
-.\assets\internal\Colectora.s3db
