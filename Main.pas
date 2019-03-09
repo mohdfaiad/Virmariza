@@ -14,7 +14,8 @@ uses
   FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,System.IOUtils,
   FMX.ListBox, Data.Bind.EngExt, Fmx.Bind.DBEngExt, Fmx.Bind.Grid,
   System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
-  Data.Bind.DBScope, Data.Bind.Grid, FMX.DateTimeCtrls;
+  Data.Bind.DBScope, Data.Bind.Grid, FMX.DateTimeCtrls, FMX.ListView.Types,
+  FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView;
 
 type
   TMainForm = class(TForm)
@@ -22,8 +23,6 @@ type
     TabItem1: TTabItem;
     TabItem2: TTabItem;
     TabItem3: TTabItem;
-    ToolBar4: TToolBar;
-    lblTitle4: TLabel;
     TabItem4: TTabItem;
     GestureManager1: TGestureManager;
     ActionList1: TActionList;
@@ -74,6 +73,15 @@ type
     Button1: TButton;
     DateEdit2: TDateEdit;
     ComboEmpleado: TComboBox;
+    DateEdit3: TDateEdit;
+    StringGrid3: TStringGrid;
+    ComboBox1: TComboBox;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    ListView1: TListView;
+    BindSourceDB2: TBindSourceDB;
+    FDQuery1: TFDQuery;
+    LinkFillControlToFieldTrabajo: TLinkFillControlToField;
     procedure GestureDone(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure ConexionBeforeConnect(Sender: TObject);
@@ -139,8 +147,9 @@ procedure TMainForm.ConexionAfterConnect(Sender: TObject);
 begin
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS ARTICULO(NOMBRE TEXT NOT NULL,LINEA TEXT NOT NULL,CANTIDAD TEXT NOT NULL,COSTO TEXT,PUBLICO TEXT,MAYOREO TEXT,BOLERO TEXT,ESPECIAL TEXT,P_PUBLICO TEXT,P_MAYOREO TEXT,P_BOLERO TEXT, P_ESPECIAL TEXT)');
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Linea(Nombre TEXT NOT NULL)');
-  Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Empleado(Nombre TEXT,Ganancia TEXT,Especializacion TEXT NOT NULL)');
+  Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Empleado(Nombre TEXT,Ganancia TEXT,Especializacion TEXT)');
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Reparacion(Empleado TEXT,Folio INTEGER,Precio TEXT,Cantidad INTEGER,Descripcion TEXT,Fecha TEXT,Fecha_Hora TEXT)');
+  Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Trabajo(Trabajo TEXT,Informacion TEXT)')
   end;
 //Antes de conectar identifica la base de datos
 procedure TMainForm.ConexionBeforeConnect(Sender: TObject);
@@ -193,24 +202,18 @@ begin
       Folio:=(Fields[0].AsInteger);
       Fecha:=(Fields[1].AsString);
       Empleado:=(Fields[2].AsString);
-      if Integer=0 then
+      if Folio=0 then
       begin
         Clear;
         Add('Insert into Reparacion  ');
         Add('(Cantidad,Descripcion,Empleado,Fecha,Fecha_Hora,Folio,Precio)');
         Add(' values (:Cantidad,:Descripcion,:Empleado,:Fecha,:Fecha_Hora,:Folio,:Precio)');
-        Params.ParamByPosition[0].AsString:=editCantidad.Text;
-        Params.ParamByPosition[1]:=EditDesc.Text;
-        Params.ParamByPosition[2]:=ComboEmpleado.Selected.Text;
-        Params.ParamByPosition[3]:=
-        Params.ParamByPosition[4]:=
-        Params.ParamByPosition[5]:=
-        Params.ParamByPosition[6]:=
+        Params[0].AsString:=editCantidad.Text;
         FDQueryInsertar.ExecSQL
       end
       else
       begin
-             MessageDlg('Ya existe un registro con el folio '+Folio+' del empleado '+Empleado+' ingresado  el '+Fecha+' ¿Desea insertarlo? ', System.UITypes.TMsgDlgType.mtInformation,
+             MessageDlg('Ya existe un registro con el folio '+Folio.ToString+' del empleado '+Empleado+' ingresado  el '+Fecha+' ¿Desea insertarlo? ', System.UITypes.TMsgDlgType.mtInformation,
         [System.UITypes.TMsgDlgBtn.mbOK,System.UITypes.TMsgDlgBtn.mbNo], 0, procedure(const AResult: System.UITypes.TModalResult)
         begin
           case AResult of

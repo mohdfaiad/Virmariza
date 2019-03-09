@@ -41,7 +41,8 @@ uses
   FGX.Types.StateValue in 'Librerias_Android\FGX.Types.StateValue.pas',
   FGX.VirtualKeyboard in 'Librerias_Android\FGX.VirtualKeyboard.pas',
   FGX.VirtualKeyboard.Types in 'Librerias_Android\FGX.VirtualKeyboard.Types.pas',
-  Presentacion in 'Presentacion.pas' {fPresentacion};
+  Presentacion in 'Presentacion.pas' {fPresentacion},
+  Funciones_Android in 'Funciones_Android.pas';
 
 {$R *.res}
 

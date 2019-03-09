@@ -28,7 +28,6 @@ inherited MainForm_LgXhdpiTb: TMainForm_LgXhdpiTb
         Size.Width = 480.000000000000000000
         inherited ComboBoxLinea: TComboBox
           Position.X = 430.000000000000000000
-          Size.Height = 33.000000000000000000
         end
       end
     end
@@ -64,11 +63,9 @@ inherited MainForm_LgXhdpiTb: TMainForm_LgXhdpiTb
       Size.Width = 120.000000000000000000
       ExplicitSize.cx = 101.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
-      inherited ToolBar4: TToolBar
-        Size.Width = 480.000000000000000000
-        inherited lblTitle4: TLabel
-          Size.Width = 480.000000000000000000
-        end
+      inherited StringGrid3: TStringGrid
+        Viewport.Width = 409.000000000000000000
+        Viewport.Height = 314.000000000000000000
       end
     end
     inherited TabItem4: TTabItem

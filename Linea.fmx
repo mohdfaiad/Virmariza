@@ -16,7 +16,7 @@ object Lineas: TLineas
     Size.Width = 728.000000000000000000
     Size.Height = 73.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 2
+    TabOrder = 3
     object Layout1: TLayout
       Align = Top
       Position.Y = 32.000000000000000000
@@ -33,7 +33,7 @@ object Lineas: TLineas
         Size.PlatformDefault = False
         TextPrompt = 'Ingrese el nombre de la linea'
       end
-      object GuardarLinea: TButton
+      object btnGuardarLinea: TButton
         Align = Right
         Position.X = 545.000000000000000000
         Size.Width = 183.000000000000000000
@@ -41,7 +41,7 @@ object Lineas: TLineas
         Size.PlatformDefault = False
         TabOrder = 1
         Text = 'Guardar'
-        OnClick = GuardarLineaClick
+        OnClick = btnGuardarLineaClick
       end
       object BtnBorrarLinea: TButton
         Align = Right
@@ -54,12 +54,16 @@ object Lineas: TLineas
         OnClick = BtnBorrarLineaClick
       end
     end
-    object ComboBox1: TComboBox
+    object ComboLinea: TComboBox
       Align = Top
+      Items.Strings = (
+        'Linea')
+      ItemIndex = 0
       Size.Width = 728.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
+      OnChange = ComboLineaChange
     end
   end
   object ToolBar1: TToolBar
@@ -67,11 +71,11 @@ object Lineas: TLineas
     Size.Width = 728.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 3
+    TabOrder = 4
   end
   object LayoutEmp: TLayout
     Align = Top
-    Position.Y = 131.000000000000000000
+    Position.Y = 214.000000000000000000
     Size.Width = 728.000000000000000000
     Size.Height = 72.000000000000000000
     Size.PlatformDefault = False
@@ -85,40 +89,125 @@ object Lineas: TLineas
       TabOrder = 0
       object EditEmp: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        Align = Client
-        TabOrder = 0
-        Size.Width = 368.000000000000000000
+        Align = Left
+        TabOrder = 1
+        Position.Y = 4.000000000000000000
+        Size.Width = 199.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
-        TextPrompt = 'Ingrese el nombre del empleado'
+        TextPrompt = 'Nombre'
       end
-      object GuardarEmp: TButton
+      object BtnGuardarEmp: TButton
         Align = Right
         Position.X = 545.000000000000000000
         Size.Width = 183.000000000000000000
         Size.Height = 41.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 1
+        TabOrder = 2
         Text = 'Guardar'
-        OnClick = GuardarLineaClick
+        OnClick = BtnGuardarEmpClick
       end
-      object BorrarEmp: TButton
+      object BtnBorrarEmp: TButton
         Align = Right
         Position.X = 368.000000000000000000
         Size.Width = 177.000000000000000000
         Size.Height = 41.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 2
+        TabOrder = 3
         Text = 'Borrar'
-        OnClick = BtnBorrarLineaClick
+        OnClick = BtnBorrarEmpClick
+      end
+      object EdtGanancia: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Left
+        TabOrder = 0
+        Position.X = 199.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 169.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = '%Ganancia'
       end
     end
-    object ComboBox2: TComboBox
+    object ComboEmpleado: TComboBox
       Align = Top
+      Items.Strings = (
+        'Empleado')
+      ItemIndex = 0
       Size.Width = 728.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
+      OnChange = ComboEmpleadoChange
+    end
+  end
+  object Layout2: TLayout
+    Align = Top
+    Margins.Bottom = 10.000000000000000000
+    Position.Y = 131.000000000000000000
+    Size.Width = 728.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object Layout4: TLayout
+      Align = Top
+      Position.Y = 32.000000000000000000
+      Size.Width = 728.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object EdtTrabajo: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Left
+        TabOrder = 1
+        Position.Y = 4.000000000000000000
+        Size.Width = 193.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'Tipo de trabajo'
+      end
+      object BtnGuardarTrabajo: TButton
+        Align = Right
+        Position.X = 545.000000000000000000
+        Size.Width = 183.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Guardar'
+        OnClick = BtnGuardarTrabajoClick
+      end
+      object BtnBorrarTrabajo: TButton
+        Align = Right
+        Position.X = 360.000000000000000000
+        Size.Width = 185.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        Text = 'Borrar'
+        OnClick = BtnBorrarTrabajoClick
+      end
+      object EdtInfo: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Left
+        TabOrder = 0
+        Position.X = 193.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 169.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'Info'
+      end
+    end
+    object ComboTrabajo: TComboBox
+      Align = Top
+      Items.Strings = (
+        'Tipo de trabajo')
+      ItemIndex = 0
+      Size.Width = 728.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      OnChange = ComboTrabajoChange
     end
   end
 end
