@@ -28,6 +28,7 @@ inherited MainForm_LgXhdpiTb: TMainForm_LgXhdpiTb
         Size.Width = 480.000000000000000000
         inherited ComboBoxLinea: TComboBox
           Position.X = 430.000000000000000000
+          Size.Height = 33.000000000000000000
         end
       end
     end

@@ -18,7 +18,7 @@ object MainForm: TMainForm
     Size.Height = 439.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 2
+    TabIndex = 1
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
@@ -86,7 +86,7 @@ object MainForm: TMainForm
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 192.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -145,6 +145,7 @@ object MainForm: TMainForm
           Size.Height = 48.000000000000000000
           Size.PlatformDefault = False
           Text = 'Ingresar'
+          OnClick = btnIngresarClick
         end
         object Label1: TLabel
           Align = Left
@@ -238,13 +239,14 @@ object MainForm: TMainForm
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
+        OnChange = ComboEmpleadoChange
       end
     end
     object TabItem3: TTabItem
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 192.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -283,11 +285,13 @@ object MainForm: TMainForm
         Position.X = 240.000000000000000000
         Position.Y = 111.000000000000000000
         Text = 'Agregar'
+        OnClick = SpeedButton1Click
       end
       object SpeedButton2: TSpeedButton
         Position.X = 240.000000000000000000
         Position.Y = 175.000000000000000000
         Text = 'Restar'
+        OnClick = SpeedButton2Click
       end
       object ListView1: TListView
         ItemAppearanceClassName = 'TListItemAppearance'
@@ -364,12 +368,12 @@ object MainForm: TMainForm
   object TimerPresentacion: TTimer
     OnTimer = TimerPresentacionTimer
     Left = 704
-    Top = 16
+    Top = 240
   end
   object GestureManager1: TGestureManager
     Sensitivity = 80.000000000000000000
-    Left = 104
-    Top = 1
+    Left = 608
+    Top = 273
     GestureData = <
       item
         Control = TabControl1
@@ -383,7 +387,8 @@ object MainForm: TMainForm
       end>
   end
   object ActionList1: TActionList
-    Left = 32
+    Left = 656
+    Top = 232
     object NextTabAction1: TNextTabAction
       Category = 'Tab'
     end
@@ -402,7 +407,7 @@ object MainForm: TMainForm
     AfterConnect = ConexionAfterConnect
     BeforeConnect = ConexionBeforeConnect
     Left = 704
-    Top = 224
+    Top = 328
   end
   object FDQueryBuscar: TFDQuery
     Connection = Conexion
@@ -411,13 +416,13 @@ object MainForm: TMainForm
   end
   object FDQueryInsertar: TFDQuery
     Connection = Conexion
-    Left = 704
-    Top = 160
+    Left = 656
+    Top = 320
   end
   object FDQueryActualizar: TFDQuery
     Connection = Conexion
-    Left = 704
-    Top = 304
+    Left = 568
+    Top = 384
   end
   object FdMemArt: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
@@ -427,8 +432,8 @@ object MainForm: TMainForm
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 704
-    Top = 112
+    Left = 600
+    Top = 320
     object FdMemArtID: TIntegerField
       FieldName = 'ID'
     end
@@ -469,8 +474,8 @@ object MainForm: TMainForm
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 20
-    Top = 5
+    Left = 604
+    Top = 229
     object LinkGridToDataSourceBindSourceDB12: TLinkGridToDataSource
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
@@ -523,20 +528,20 @@ object MainForm: TMainForm
     DataSet = FdMemArt
     ScopeMappings = <>
     Left = 704
-    Top = 64
+    Top = 280
   end
   object BindSourceDB2: TBindSourceDB
     DataSet = FDQuery1
     ScopeMappings = <>
-    Left = 368
-    Top = 208
+    Left = 656
+    Top = 280
   end
   object FDQuery1: TFDQuery
     Active = True
     Connection = Conexion
     SQL.Strings = (
       'Select Trabajo,Informacion from trabajo ')
-    Left = 376
-    Top = 216
+    Left = 624
+    Top = 384
   end
 end

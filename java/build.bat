@@ -7,7 +7,7 @@ echo Place this batch in a java folder below your project (project\java)
 echo Place the source in project\java\src\com\dannywind\delphi
 echo If your source file location or name is different, please modify it below.
 echo.setlocal
-set ANDROID_JAR=”C:\Users\Public\Documents\Embarcadero\Studio\19.0\PlatformSDKs\android-sdk-windows\platforms\android-27\android.jar”
+set ANDROID_JAR=”C:\Users\Public\Documents\Embarcadero\Studio\19.0\PlatformSDKs\android-sdk-windows\platforms\android-28\android.jar”
 set DX_LIB=”C:\Users\Public\Documents\Embarcadero\Studio\19.0\PlatformSDKs\android-sdk-windows\build-tools\24.0.3\lib”
 set EMBO_DEX=”C:\Users\Melany\Desktop\Compartida\Proyectos\VerificadorDSRest\DSDelphi10Server\DSClient\Android\Debug\classes.dex”
 set PROJ_DIR="C:\Users\Melany\Desktop\Compartida\Proyectos\VerificadorDSRest\DSDelphi10Server\DSClient"

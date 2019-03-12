@@ -83,7 +83,7 @@ Coordinates=610,90,106,58
 Coordinates=146,337,78,36
 
 [FdMemArt]
-Coordinates=703,100,74,36
+Coordinates=871,120,74,36
 Visible=True
 
 []
@@ -106,7 +106,7 @@ Coordinates=67,318,87,36
 Coordinates=280,80,91,36
 
 [BindSourceDB1]
-Coordinates=619,90,106,344
+Coordinates=920,120,106,344
 
 [StringGrid2]
 Coordinates=0,0,80,190
@@ -170,9 +170,10 @@ Coordinates=277,502,80,58
 
 [SpeedButton1]
 Coordinates=787,265,96,58
+Visible=True
 
 [ListView1]
-Coordinates=210,130,107,168
+Coordinates=430,270,107,168
 Visible=True
 
 [DateEdit3]
@@ -182,7 +183,7 @@ Coordinates=760,188,138,58
 Coordinates=132,411,101,146
 
 [BindSourceDB2]
-Coordinates=502,87,106,138
+Coordinates=680,230,106,138
 
 [FDQuery1]
 Coordinates=502,87,73,36

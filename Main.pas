@@ -95,7 +95,13 @@ type
     procedure TimerPresentacionTimer(Sender: TObject);
     procedure StringGrid2CellClick(const Column: TColumn; const Row: Integer);
     procedure Button1Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure ComboEmpleadoChange(Sender: TObject);
+    procedure btnIngresarClick(Sender: TObject);
   private
+   Hoy :TDateTime;
+   ComboEmpSelected:Boolean;
     { Private declarations }
   public
   IDROW_SELECCIONADO:string;
@@ -123,6 +129,17 @@ begin
   end;
 end;
 
+procedure TMainForm.btnIngresarClick(Sender: TObject);
+begin
+  if ComboEmpSelected then
+  begin
+    if (EditFolio.Text.Equals('') and EditDesc.Text.Equals('')) or EditPrecio.Text.Equals('') or editCantidad.Text.Equals('') then
+    ShowMessage('Debe ingresar un folio o descripcion del trabajo,con su respectivo precio y cantidad') else
+    InsertarTrabajo;
+  end
+  else ShowMessage('Debe seleccionar un empleado');
+end;
+
 procedure TMainForm.btnLineaClick(Sender: TObject);
 begin
   Lineas:=TLineas.Create(nil);
@@ -142,12 +159,17 @@ procedure TMainForm.ComboBoxLineaChange(Sender: TObject);
 begin
    LlenarTabla;
 end;
- //Crea las tablas en la inicializacion
+ procedure TMainForm.ComboEmpleadoChange(Sender: TObject);
+begin
+   ComboEmpSelected:=True;
+end;
+
+//Crea las tablas en la inicializacion
 procedure TMainForm.ConexionAfterConnect(Sender: TObject);
 begin
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS ARTICULO(NOMBRE TEXT NOT NULL,LINEA TEXT NOT NULL,CANTIDAD TEXT NOT NULL,COSTO TEXT,PUBLICO TEXT,MAYOREO TEXT,BOLERO TEXT,ESPECIAL TEXT,P_PUBLICO TEXT,P_MAYOREO TEXT,P_BOLERO TEXT, P_ESPECIAL TEXT)');
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Linea(Nombre TEXT NOT NULL)');
-  Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Empleado(Nombre TEXT,Ganancia TEXT,Especializacion TEXT)');
+  Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Empleado(Nombre TEXT,Ganancia TEXT)');
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Reparacion(Empleado TEXT,Folio INTEGER,Precio TEXT,Cantidad INTEGER,Descripcion TEXT,Fecha TEXT,Fecha_Hora TEXT)');
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Trabajo(Trabajo TEXT,Informacion TEXT)')
   end;
@@ -189,7 +211,7 @@ end;
 procedure TMainForm.InsertarTrabajo;
 var
 Folio:Integer;
-Fecha:string;
+Fecha,Fecha_Hora:string;
 Empleado:string;
 begin
       try
@@ -204,23 +226,45 @@ begin
       Empleado:=(Fields[2].AsString);
       if Folio=0 then
       begin
+        Hoy:=Now;
+        Fecha:=(formatdatetime('d/m/y', Hoy));
+        Fecha_Hora:=((formatdatetime('d/m/y', Hoy))+(FormatDATETime(' hh:mm', Hoy)));
         Clear;
         Add('Insert into Reparacion  ');
         Add('(Cantidad,Descripcion,Empleado,Fecha,Fecha_Hora,Folio,Precio)');
         Add(' values (:Cantidad,:Descripcion,:Empleado,:Fecha,:Fecha_Hora,:Folio,:Precio)');
         Params[0].AsString:=editCantidad.Text;
+        Params[1].AsString:=editDesc.Text;
+        Params[2].AsString:=ComboEmpleado.Selected.Text;
+        Params[3].AsString:=Fecha;
+        Params[4].AsString:=Fecha_Hora;
+        Params[5].AsString:=EditFolio.Text;
+        Params[6].AsString:=EditPrecio.Text;
         FDQueryInsertar.ExecSQL
       end
       else
       begin
-             MessageDlg('Ya existe un registro con el folio '+Folio.ToString+' del empleado '+Empleado+' ingresado  el '+Fecha+' ¿Desea insertarlo? ', System.UITypes.TMsgDlgType.mtInformation,
+        MessageDlg('Ya existe un registro con el mismo folio del empleado '+Empleado+' ingresado  el '+Fecha+' ¿Desea insertarlo igualmente? ', System.UITypes.TMsgDlgType.mtInformation,
         [System.UITypes.TMsgDlgBtn.mbOK,System.UITypes.TMsgDlgBtn.mbNo], 0, procedure(const AResult: System.UITypes.TModalResult)
         begin
           case AResult of
             mrOk:
             begin
+              Hoy:=Now;
+              Fecha:=(formatdatetime('d/m/y', Hoy));
+              Fecha_Hora:=((formatdatetime('d/m/y', Hoy))+(FormatDATETime(' hh:mm', Hoy)));
               Clear;
-              MainForm.FDQueryInsertar.ExecSQL;
+              Add('Insert into Reparacion  ');
+              Add('(Cantidad,Descripcion,Empleado,Fecha,Fecha_Hora,Folio,Precio)');
+              Add(' values (:Cantidad,:Descripcion,:Empleado,:Fecha,:Fecha_Hora,:Folio,:Precio)');
+              Params[0].AsString:=editCantidad.Text;
+              Params[1].AsString:=editDesc.Text;
+              Params[2].AsString:=ComboEmpleado.Selected.Text;
+              Params[3].AsString:=Fecha;
+              Params[4].AsString:=Fecha_Hora;
+              Params[5].AsString:=EditFolio.Text;
+              Params[6].AsString:=EditPrecio.Text;
+              FDQueryInsertar.ExecSQL
             end;
             mrNo:
           end;
@@ -304,6 +348,20 @@ begin
   end;
 end;
 //Acciones realizadas al momento de oprimir una celda en el grid
+procedure TMainForm.SpeedButton1Click(Sender: TObject);
+begin
+ ShowMessage(TListViewItem(ListView1.Selected).Text);
+end;
+
+procedure TMainForm.SpeedButton2Click(Sender: TObject);
+var
+Fecha:string;
+begin
+  Hoy:=Now;
+  Fecha:=(formatdatetime('d/m/y', Hoy));
+  ShowMessage(Fecha);
+end;
+
 procedure TMainForm.StringGrid2CellClick(const Column: TColumn;
   const Row: Integer);
 begin
