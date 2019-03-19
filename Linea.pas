@@ -76,7 +76,7 @@ begin
       Add('Delete from Empleado where Nombre='+''''+ComboEmpleado.Selected.Text+'''');
       MainForm.FDQueryInsertar.ExecSQL;
       BuscarEmp;
-      ToastImagen('Empleado eliminado',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
+      ToastImagen('Empleado eliminado',false,MainForm.LogoVirma.Bitmap,$FFFFFF,$FF000000);
     end;
     except
     on E:exception do
@@ -95,7 +95,7 @@ begin
       Add('Delete from Linea where Nombre='+''''+ComboLinea.Selected.Text+'''');
       MainForm.FDQueryInsertar.ExecSQL;
       BuscarLinea;
-      ToastImagen('Linea eliminada',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
+      ToastImagen('Linea eliminada',false,MainForm.LogoVirma.Bitmap,$FFFFFF,$FF000000);
     end;
     except
     on E:exception do
@@ -111,7 +111,7 @@ begin
       Add('Delete from Trabajo where Trabajo='+''''+ComboTrabajo.Selected.Text+'''');
       MainForm.FDQueryInsertar.ExecSQL;
       BuscarTrabajo;
-      ToastImagen('Trabajo eliminado',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
+      ToastImagen('Trabajo eliminado',false,MainForm.LogoVirma.Bitmap,$FFFFFF,$FF000000);
     end;
     except
     on E:exception do
@@ -302,6 +302,8 @@ begin
   begin
     InsertarEmpleado;
   end;
+  MainForm.ObtenerEmpleadosLista;
+  MainForm.ObtenerEmpleadosTrabajo;
 end;
 
 procedure TLineas.btnGuardarLineaClick(Sender: TObject);
@@ -334,7 +336,7 @@ begin
       EditEmp.Text:='';
       EdtGanancia.Text:='';
       BuscarEmp;
-      ToastImagen('Empleado insertado exitosamente',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
+      ToastImagen('Empleado insertado exitosamente',false,MainForm.LogoVirma.Bitmap,$FFFFFF,$FF000000);
       OcultarTeclado;
     end;
   except
@@ -356,7 +358,7 @@ begin
       BuscarLinea;
       EditLinea.Text:='';
       OcultarTeclado;
-      ToastImagen('Linea insertada exitosamente',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
+      ToastImagen('Linea insertada exitosamente',false,MainForm.LogoVirma.Bitmap,$FFFFFF,$FF000000);
       OcultarTeclado;
     end;
   except
@@ -379,7 +381,7 @@ begin
       EdtTrabajo.Text:='';
       EdtInfo.Text:='';
       BuscarTrabajo;
-      ToastImagen('Trabajo insertado exitosamente',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
+      ToastImagen('Trabajo insertado exitosamente',false,MainForm.LogoVirma.Bitmap,$FFFFFF,$FF000000);
       OcultarTeclado;
     end;
   except

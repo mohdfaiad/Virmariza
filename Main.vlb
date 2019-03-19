@@ -48,15 +48,13 @@ Coordinates=135,125,123,58
 
 [TabItem1]
 Coordinates=176,247,69,36
+Visible=True
 
 [EditPrecio]
 Coordinates=10,125,73,58
 
 [LayoutIngresar]
 Coordinates=78,247,100,36
-
-[StringGrid1]
-Coordinates=345,10,80,58
 
 [editCantidad]
 Coordinates=376,125,87,58
@@ -83,11 +81,11 @@ Coordinates=610,90,106,58
 Coordinates=146,337,78,36
 
 [FdMemArt]
-Coordinates=871,120,74,36
+Coordinates=1207,160,74,36
 Visible=True
 
 []
-Coordinates=10,247,58,33
+Coordinates=995,493,161,36
 Visible=True
 
 [FdMemArtNombre]
@@ -106,7 +104,7 @@ Coordinates=67,318,87,36
 Coordinates=280,80,91,36
 
 [BindSourceDB1]
-Coordinates=920,120,106,344
+Coordinates=1123,150,106,344
 
 [StringGrid2]
 Coordinates=0,0,80,190
@@ -139,7 +137,7 @@ Coordinates=604,374,122,36
 Coordinates=604,429,124,36
 
 [ComboEmpleado]
-Coordinates=0,0,113,146
+Coordinates=120,160,113,146
 
 [FdMemArtPrecio]
 Coordinates=604,484,111,36
@@ -153,9 +151,6 @@ Coordinates=366,502,108,36
 [Label5]
 Coordinates=229,302,53,58
 
-[DateEdit2]
-Coordinates=760,1,138,58
-
 [DateEdit1]
 Coordinates=210,1,138,58
 
@@ -165,9 +160,6 @@ Coordinates=241,398,60,36
 [SpeedButton2]
 Coordinates=787,342,96,58
 
-[StringGrid3]
-Coordinates=277,502,80,58
-
 [SpeedButton1]
 Coordinates=787,265,96,58
 Visible=True
@@ -176,16 +168,48 @@ Visible=True
 Coordinates=430,270,107,168
 Visible=True
 
-[DateEdit3]
-Coordinates=760,188,138,58
-
-[ComboBox1]
-Coordinates=132,411,101,146
-
 [BindSourceDB2]
-Coordinates=680,230,106,138
+Coordinates=680,230,115,138
 
 [FDQuery1]
 Coordinates=502,87,73,36
 Visible=False
+
+[FDMemTrabajos]
+Coordinates=440,410,110,36
+Visible=False
+
+[FDMemFilaTrabajo]
+Coordinates=833,483,124,36
+Visible=False
+
+[FDMemTrabajosDescripcion]
+Coordinates=768,419,177,36
+
+[StringGridTrabajos]
+Coordinates=610,450,123,146
+
+[BindSourceDB3]
+Coordinates=440,410,106,168
+
+[ComboEmpleadosLista]
+Coordinates=132,411,147,146
+
+[FDMemFilaTrabajoTrabajo]
+Coordinates=210,78,168,36
+
+[FDMemFilaTrabajoCantidad]
+Coordinates=210,78,176,36
+
+[StringGridLista]
+Coordinates=290,500,100,102
+
+[BindSourceDB4]
+Coordinates=833,483,112,124
+
+[FechaLista]
+Coordinates=760,188,138,58
+
+[FechaTrabajos]
+Coordinates=760,1,138,58
 

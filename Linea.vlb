@@ -4,3 +4,9 @@ Visible=False
 [MainForm.FDQuery1]
 Visible=False
 
+[MainForm.FDMemTrabajos]
+Visible=False
+
+[MainForm.FDMemFilaTrabajo]
+Visible=False
+

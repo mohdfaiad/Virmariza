@@ -37,7 +37,7 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Cantidad: TLabel;
-    StringGrid1: TStringGrid;
+    StringGridTrabajos: TStringGrid;
     Layout1: TLayout;
     EditDesc: TEdit;
     Label3: TLabel;
@@ -72,18 +72,30 @@ type
     Label5: TLabel;
     DateEdit1: TDateEdit;
     Button1: TButton;
-    DateEdit2: TDateEdit;
+    FechaTrabajos: TDateEdit;
     ComboEmpleado: TComboBox;
-    DateEdit3: TDateEdit;
-    StringGrid3: TStringGrid;
-    ComboBox1: TComboBox;
+    FechaLista: TDateEdit;
+    StringGridLista: TStringGrid;
+    ComboEmpleadosLista: TComboBox;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     ListView1: TListView;
     BindSourceDB2: TBindSourceDB;
     FDQuery1: TFDQuery;
     LinkFillControlToFieldTrabajo: TLinkFillControlToField;
-    LogoVirma: TImage;
+    FDMemFilaTrabajo: TFDMemTable;
+    FDMemTrabajos: TFDMemTable;
+    FDMemTrabajosDescripcion: TStringField;
+    BindSourceDB3: TBindSourceDB;
+    LinkGridToDataSourceBindSourceDB3: TLinkGridToDataSource;
+    FDMemFilaTrabajoTrabajo: TStringField;
+    FDMemFilaTrabajoCantidad: TIntegerField;
+    BindSourceDB4: TBindSourceDB;
+    LinkGridToDataSourceBindSourceDB4: TLinkGridToDataSource;
+    logoVirma: TImage;
+    FDMemTrabajosPrecio: TStringField;
+    FDMemTrabajosFolio: TIntegerField;
+    FDMemTrabajosCantidad: TIntegerField;
     procedure GestureDone(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure ConexionBeforeConnect(Sender: TObject);
@@ -92,6 +104,8 @@ type
     procedure btnArticulosClick(Sender: TObject);
     procedure LlenarTabla;
     procedure ObtenerLineas;
+    procedure ObtenerEmpleadosTrabajo;
+    procedure ObtenerEmpleadosLista;
     procedure InsertarTrabajo;
     procedure ComboBoxLineaChange(Sender: TObject);
     procedure TimerPresentacionTimer(Sender: TObject);
@@ -101,9 +115,15 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure ComboEmpleadoChange(Sender: TObject);
     procedure btnIngresarClick(Sender: TObject);
+    procedure ObtenerFilaTrabajos;
+    procedure ObtenerTrabajos;
+    procedure DateEdit2Change(Sender: TObject);
+    procedure ComboEmpleadosListaChange(Sender: TObject);
+    procedure FechaTrabajosChange(Sender: TObject);
   private
    Hoy :TDateTime;
    ComboEmpSelected:Boolean;
+   ComboEmpListaSelected:Boolean;
     { Private declarations }
   public
   IDROW_SELECCIONADO:string;
@@ -138,6 +158,7 @@ begin
     if (EditFolio.Text.Equals('') and EditDesc.Text.Equals('')) or EditPrecio.Text.Equals('') or editCantidad.Text.Equals('') then
     ShowMessage('Debe ingresar un folio o descripcion del trabajo,con su respectivo precio y cantidad') else
     InsertarTrabajo;
+    ObtenerTrabajos;
   end
   else ShowMessage('Debe seleccionar un empleado');
 end;
@@ -164,6 +185,12 @@ end;
  procedure TMainForm.ComboEmpleadoChange(Sender: TObject);
 begin
    ComboEmpSelected:=True;
+   ObtenerTrabajos;
+end;
+
+procedure TMainForm.ComboEmpleadosListaChange(Sender: TObject);
+begin
+  ComboEmpListaSelected:=True;
 end;
 
 //Crea las tablas en la inicializacion
@@ -184,11 +211,30 @@ begin
   {$ENDIF}
 end;
 
-procedure TMainForm.FormCreate(Sender: TObject);
+procedure TMainForm.DateEdit2Change(Sender: TObject);
 begin
+  ObtenerTrabajos;
+end;
+
+procedure TMainForm.FechaTrabajosChange(Sender: TObject);
+begin
+  if ComboEmpSelected then   ObtenerTrabajos;
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+var
+Fecha:string;
+begin
+  Hoy:=Now;
   { This defines the default active tab at runtime }
   TabControl1.ActiveTab := TabItem1;
   ObtenerLineas;
+
+  Fecha:=(formatdatetime('d/m/y', Hoy));
+  FechaLista.Date:=Hoy;
+  FechaTrabajos.Date:=Hoy;
+  ObtenerEmpleadosLista;
+  ObtenerEmpleadosTrabajo;
 end;
 
 procedure TMainForm.GestureDone(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
@@ -317,6 +363,105 @@ begin
   end;
 end;
 //Obtiene las lineas y las agrega en el combobox
+procedure TMainForm.ObtenerEmpleadosLista;
+begin
+   try
+    with MainForm.FDQueryBuscar,SQL do
+    begin
+      ComboEmpleado.Clear;
+      Active :=  False;
+      Clear;
+      Add('Select Nombre From Empleado');
+      Close;
+      Open;
+      while not eof do
+      begin
+        try
+          begin
+            ComboEmpleadosLista.Items.Add(Fields[0].AsString);
+            Next;
+          end;
+          except
+          on e: Exception do
+          begin
+            ShowMessage(e.Message);
+          end;
+        end;
+      end;
+
+    end;
+    except
+    on E:exception do
+    showmessage(e.Message);
+  end;
+end;
+
+procedure TMainForm.ObtenerEmpleadosTrabajo;
+begin
+   try
+    with MainForm.FDQueryBuscar,SQL do
+    begin
+      ComboEmpleado.Clear;
+      Active :=  False;
+      Clear;
+      Add('Select Nombre From Empleado');
+      Close;
+      Open;
+      while not eof do
+      begin
+        try
+          begin
+            ComboEmpleado.Items.Add(Fields[0].AsString);
+            Next;
+          end;
+          except
+          on e: Exception do
+          begin
+            ShowMessage(e.Message);
+          end;
+        end;
+      end;
+
+    end;
+    except
+    on E:exception do
+    showmessage(e.Message);
+  end;
+end;
+
+procedure TMainForm.ObtenerFilaTrabajos;
+begin
+     try
+    with FDQueryBuscar,SQL do
+    begin
+      ComboBoxLinea.Clear;
+      Active :=  False;
+      Clear;
+      Add('Select Nombre From Linea');
+      Close;
+      Open;
+      while not eof do
+      begin
+        try
+          begin
+            ComboBoxLinea.Items.Add(Fields[0].AsString);
+            Next;
+          end;
+          except
+          on e: Exception do
+          begin
+            ShowMessage(e.Message);
+          end;
+        end;
+      end;
+
+    end;
+    except
+    on E:exception do
+    showmessage(e.Message);
+  end;
+end;
+
 procedure TMainForm.ObtenerLineas;
 begin
     try
@@ -349,6 +494,37 @@ begin
     showmessage(e.Message);
   end;
 end;
+procedure TMainForm.ObtenerTrabajos;
+begin
+  try
+    FDMemTrabajos.Close;
+    FDMemTrabajos.Open;
+    with FDQueryBuscar,SQL do
+    begin
+      Active :=  False;
+      Clear;
+      Add('Select Folio,Precio,Descripcion,Cantidad from Reparacion where Empleado=:Empleado and Fecha=:Fecha');
+      Params[0].AsString:=ComboEmpleado.Selected.Text;
+      Params[1].AsString:=FechaTrabajos.Data.ToString;
+      close;
+      Open;
+      while not Eof do
+      begin
+        FDMemTrabajos.Append;
+        (FDMemTrabajos.FieldByName('Folio') as TIntegerField).AsInteger:= Fields[0].AsInteger;
+        (FDMemTrabajos.FieldByName('Precio') as TStringField).AsString:= Fields[1].AsString;
+        (FDMemTrabajos.FieldByName('Descripcion') as TStringField).AsString:= Fields[2].AsString;
+        (FDMemTrabajos.FieldByName('Cantidad') as TIntegerField).AsInteger:= Fields[3].AsInteger;
+        FDMemTrabajos.Post;
+        Next;
+      end;
+    end;
+    except
+    on E:Exception do
+    showmessage(E.Message);
+  end;
+end;
+
 //Acciones realizadas al momento de oprimir una celda en el grid
 procedure TMainForm.SpeedButton1Click(Sender: TObject);
 begin

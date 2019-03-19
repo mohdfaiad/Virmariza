@@ -10,11 +10,8 @@ uses
 
 type
   TfPresentacion = class(TForm)
-    img1: TImage;
-    lbl1: TLabel;
-    lbl2: TLabel;
-    lbl3: TLabel;
     tClose: TTimer;
+    Image1: TImage;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure tCloseTimer(Sender: TObject);
