@@ -63,7 +63,7 @@ implementation
 
 {$R *.fmx}
 
-uses Main, Androidapi.JNI.Toasts, FGX.Toasts, FGX.Toasts.Android;
+uses Main, Androidapi.JNI.Toasts, FGX.Toasts, FGX.Toasts.Android, Funciones_Android;
 
 { TLineas }
 
@@ -76,6 +76,7 @@ begin
       Add('Delete from Empleado where Nombre='+''''+ComboEmpleado.Selected.Text+'''');
       MainForm.FDQueryInsertar.ExecSQL;
       BuscarEmp;
+      ToastImagen('Empleado eliminado',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
     end;
     except
     on E:exception do
@@ -94,12 +95,7 @@ begin
       Add('Delete from Linea where Nombre='+''''+ComboLinea.Selected.Text+'''');
       MainForm.FDQueryInsertar.ExecSQL;
       BuscarLinea;
-      Toast := TfgToast.Create('Linea eliminada correctamente ', TfgToastDuration(Long));
-      //Toast.Icon:=FMainActivity.Logo.Bitmap;
-      Toast.MessageColor := $FFFFFFFF;
-      Toast.BackgroundColor := $8A000000 ;
-      Toast.Show;
-      Toast.Free;
+      ToastImagen('Linea eliminada',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
     end;
     except
     on E:exception do
@@ -115,6 +111,7 @@ begin
       Add('Delete from Trabajo where Trabajo='+''''+ComboTrabajo.Selected.Text+'''');
       MainForm.FDQueryInsertar.ExecSQL;
       BuscarTrabajo;
+      ToastImagen('Trabajo eliminado',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
     end;
     except
     on E:exception do
@@ -337,6 +334,8 @@ begin
       EditEmp.Text:='';
       EdtGanancia.Text:='';
       BuscarEmp;
+      ToastImagen('Empleado insertado exitosamente',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
+      OcultarTeclado;
     end;
   except
     on E:exception do
@@ -356,6 +355,9 @@ begin
       MainForm.FDQueryInsertar.ExecSQL;
       BuscarLinea;
       EditLinea.Text:='';
+      OcultarTeclado;
+      ToastImagen('Linea insertada exitosamente',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
+      OcultarTeclado;
     end;
   except
     on E:exception do
@@ -377,6 +379,8 @@ begin
       EdtTrabajo.Text:='';
       EdtInfo.Text:='';
       BuscarTrabajo;
+      ToastImagen('Trabajo insertado exitosamente',false,MainForm.LogoVirma.Bitmap,$FF000000,$FFFFFF);
+      OcultarTeclado;
     end;
   except
     on E:exception do

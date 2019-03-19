@@ -1,3 +1,6 @@
 ﻿[MainForm.FdMemArt]
 Visible=False
 
+[MainForm.FDQuery1]
+Visible=False
+
