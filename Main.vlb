@@ -1,215 +1,240 @@
 ﻿[Layout1]
-Coordinates=10,290,60,36
+Coordinates=10,290,53,33
 
 [TabItem3]
-Coordinates=467,247,69,36
+Coordinates=467,247,59,33
 
 [Cantidad]
-Coordinates=252,125,66,58
+Coordinates=252,125,58,51
 
 [NextTabAction1]
-Coordinates=462,175,106,36
+Coordinates=462,175,92,33
 
 [Label4]
-Coordinates=459,186,53,58
+Coordinates=459,186,46,51
 
 [Label1]
-Coordinates=214,186,53,58
+Coordinates=214,186,46,51
 
 [btnEmpleado]
-Coordinates=425,10,90,58
+Coordinates=425,10,79,51
 
 [TabItem2]
-Coordinates=398,247,69,36
+Coordinates=398,247,59,33
 
 [btnArticulos]
-Coordinates=270,186,82,58
+Coordinates=270,186,74,51
 
 [Conexion]
-Coordinates=462,279,69,36
+Coordinates=462,279,61,33
 
 [TabItem4]
-Coordinates=329,247,69,36
+Coordinates=329,247,59,33
 
 [btnLinea]
-Coordinates=515,186,64,58
+Coordinates=515,186,57,51
 
 [Label3]
-Coordinates=320,125,53,58
+Coordinates=320,125,46,51
 
 [TabControl1]
-Coordinates=245,247,85,36
+Coordinates=245,247,74,33
 
 [btnIngresar]
-Coordinates=66,186,80,58
+Coordinates=66,186,70,51
 
 [FDQueryActualizar]
-Coordinates=135,125,123,58
+Coordinates=135,125,107,51
 
 [TabItem1]
-Coordinates=176,247,69,36
+Coordinates=176,247,59,33
 Visible=True
 
 [EditPrecio]
-Coordinates=10,125,73,58
+Coordinates=10,125,65,51
 
 [LayoutIngresar]
-Coordinates=78,247,100,36
+Coordinates=78,247,88,33
 
 [editCantidad]
-Coordinates=376,125,87,58
+Coordinates=376,125,76,51
 
 [PreviousTabAction1]
-Coordinates=592,1,130,36
+Coordinates=592,1,113,33
 
 [GestureManager1]
-Coordinates=592,53,118,36
+Coordinates=592,53,101,33
 
 [FDQueryInsertar]
-Coordinates=354,186,110,58
+Coordinates=354,186,95,51
 
 [EditFolio]
-Coordinates=146,186,65,58
+Coordinates=146,186,58,51
 
 [Label2]
-Coordinates=10,186,53,58
+Coordinates=10,186,46,51
 
 [FDQueryBuscar]
-Coordinates=610,90,106,58
+Coordinates=610,90,92,51
 
 [ActionList1]
-Coordinates=146,337,78,36
+Coordinates=146,337,70,33
 
 [FdMemArt]
-Coordinates=1207,160,74,36
+Coordinates=1357,180,65,33
 Visible=True
 
 []
-Coordinates=995,493,161,36
+Coordinates=648,107,92,69
 Visible=True
 
 [FdMemArtNombre]
-Coordinates=592,157,120,36
+Coordinates=592,157,104,33
 
 [FdMemArtUnidadMedida]
-Coordinates=592,209,157,36
+Coordinates=592,209,135,33
 
 [ComboBoxLinea]
-Coordinates=310,318,109,146
+Coordinates=310,318,96,123
 
 [FdMemArtID]
-Coordinates=67,318,87,36
+Coordinates=67,318,75,33
 
 [BindingsList1]
-Coordinates=280,80,91,36
+Coordinates=280,80,82,33
 
 [BindSourceDB1]
-Coordinates=1123,150,106,344
+Coordinates=1282,170,92,285
 
 [StringGrid2]
-Coordinates=0,0,80,190
+Coordinates=0,0,70,159
 
 [EditDesc]
-Coordinates=85,125,66,58
+Coordinates=85,125,58,51
 
 [Button1]
-Coordinates=132,1,59,58
+Coordinates=132,1,53,51
 
 [FdMemArtP_Bolero]
-Coordinates=132,78,127,36
+Coordinates=132,78,110,33
 
 [FdMemArtP_Mayoreo]
-Coordinates=760,78,139,36
+Coordinates=760,78,120,33
 
 [FdMemArtP_Precio]
-Coordinates=604,264,126,36
+Coordinates=604,264,109,33
 
 [FdMemArtBolero]
-Coordinates=604,319,111,36
+Coordinates=604,319,97,33
 
 [FdMemArtP_Especial]
-Coordinates=760,133,138,36
+Coordinates=760,133,119,33
 
 [TimerPresentacion]
-Coordinates=604,374,122,36
+Coordinates=604,374,107,33
 
 [FdMemArtMayoreo]
-Coordinates=604,429,124,36
+Coordinates=604,429,107,33
 
 [ComboEmpleado]
-Coordinates=120,160,113,146
+Coordinates=120,160,99,123
 
 [FdMemArtPrecio]
-Coordinates=604,484,111,36
+Coordinates=604,484,96,33
 
 [FdMemArtEspecial]
-Coordinates=475,502,123,36
+Coordinates=475,502,107,33
 
 [FdMemArtCosto]
-Coordinates=366,502,108,36
+Coordinates=366,502,94,33
 
 [Label5]
-Coordinates=229,302,53,58
+Coordinates=229,302,46,51
 
 [DateEdit1]
-Coordinates=210,1,138,58
+Coordinates=210,1,115,51
 
 [Layout2]
-Coordinates=241,398,60,36
+Coordinates=241,398,53,33
 
 [SpeedButton2]
-Coordinates=787,342,96,58
+Coordinates=787,342,84,51
+Visible=True
 
 [SpeedButton1]
-Coordinates=787,265,96,58
+Coordinates=787,265,84,51
 Visible=True
 
 [ListView1]
-Coordinates=430,270,107,168
+Coordinates=610,570,89,141
 Visible=True
 
-[BindSourceDB2]
-Coordinates=680,230,115,138
-
 [FDQuery1]
-Coordinates=502,87,73,36
-Visible=False
+Coordinates=721,117,63,51
 
 [FDMemTrabajos]
-Coordinates=440,410,110,36
+Coordinates=440,410,94,33
 Visible=False
 
 [FDMemFilaTrabajo]
-Coordinates=833,483,124,36
+Coordinates=833,483,106,33
 Visible=False
 
 [FDMemTrabajosDescripcion]
-Coordinates=768,419,177,36
+Coordinates=768,419,153,33
 
 [StringGridTrabajos]
-Coordinates=610,450,123,146
+Coordinates=610,450,108,123
 
 [BindSourceDB3]
-Coordinates=440,410,106,168
+Coordinates=440,410,92,141
 
 [ComboEmpleadosLista]
-Coordinates=132,411,147,146
+Coordinates=132,411,128,123
 
 [FDMemFilaTrabajoTrabajo]
-Coordinates=210,78,168,36
+Coordinates=210,78,143,33
 
 [FDMemFilaTrabajoCantidad]
-Coordinates=210,78,176,36
+Coordinates=210,78,150,33
 
 [StringGridLista]
-Coordinates=290,500,100,102
+Coordinates=290,500,89,87
 
 [BindSourceDB4]
-Coordinates=833,483,112,124
+Coordinates=833,483,94,105
 
 [FechaLista]
-Coordinates=760,188,138,58
+Coordinates=760,188,115,51
 
 [FechaTrabajos]
-Coordinates=760,1,138,58
+Coordinates=760,1,115,51
+
+[FDMemTrabajosFolio]
+Coordinates=833,626,119,33
+
+[logoVirma]
+Coordinates=0,0,64,51
+
+[FDMemTrabajosCantidad]
+Coordinates=983,1,138,33
+
+[FDMemTrabajosPrecio]
+Coordinates=938,56,125,33
+
+[FDMemTable1Tiempo]
+Coordinates=0,446,120,33
+
+[FDMemLista]
+Coordinates=657,590,75,33
+Visible=True
+
+[FDMemTable1Informacion]
+Coordinates=404,80,143,33
+
+[FDMemTable1Trabajo]
+Coordinates=704,625,121,33
+
+[BindSourceDB2]
+Coordinates=400,590,92,123
 

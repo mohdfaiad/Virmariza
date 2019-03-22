@@ -80,9 +80,7 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     ListView1: TListView;
-    BindSourceDB2: TBindSourceDB;
     FDQuery1: TFDQuery;
-    LinkFillControlToFieldTrabajo: TLinkFillControlToField;
     FDMemFilaTrabajo: TFDMemTable;
     FDMemTrabajos: TFDMemTable;
     FDMemTrabajosDescripcion: TStringField;
@@ -96,6 +94,12 @@ type
     FDMemTrabajosPrecio: TStringField;
     FDMemTrabajosFolio: TIntegerField;
     FDMemTrabajosCantidad: TIntegerField;
+    LinkListControlToField1: TLinkListControlToField;
+    FDMemLista: TFDMemTable;
+    FDMemTable1Trabajo: TStringField;
+    FDMemTable1Informacion: TStringField;
+    FDMemTable1Tiempo: TStringField;
+    BindSourceDB2: TBindSourceDB;
     procedure GestureDone(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure ConexionBeforeConnect(Sender: TObject);
@@ -103,15 +107,22 @@ type
     procedure btnLineaClick(Sender: TObject);
     procedure btnArticulosClick(Sender: TObject);
     procedure LlenarTabla;
+    procedure LlenarLista;
     procedure ObtenerLineas;
     procedure ObtenerEmpleadosTrabajo;
+    //Lista
+    procedure ObtenerLista;
     procedure ObtenerEmpleadosLista;
     procedure InsertarTrabajo;
+    procedure InsertarLista;
+    procedure SumarLista;
+    procedure RestarLista;
+    procedure BuscarLista;
     procedure ComboBoxLineaChange(Sender: TObject);
+    //Otro
     procedure TimerPresentacionTimer(Sender: TObject);
     procedure StringGrid2CellClick(const Column: TColumn; const Row: Integer);
     procedure Button1Click(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure ComboEmpleadoChange(Sender: TObject);
     procedure btnIngresarClick(Sender: TObject);
@@ -120,6 +131,8 @@ type
     procedure DateEdit2Change(Sender: TObject);
     procedure ComboEmpleadosListaChange(Sender: TObject);
     procedure FechaTrabajosChange(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FechaListaChange(Sender: TObject);
   private
    Hoy :TDateTime;
    ComboEmpSelected:Boolean;
@@ -127,6 +140,7 @@ type
     { Private declarations }
   public
   IDROW_SELECCIONADO:string;
+  S:String;//La cantidad que regresa
     { Public declarations }
   end;
 
@@ -136,7 +150,7 @@ var
 implementation
 
 uses
-  Linea, Articulos, Presentacion;
+  Linea, Articulos, Presentacion, Funciones_Android;
 
 {$R *.fmx}
 {$R *.LgXhdpiTb.fmx ANDROID}
@@ -173,6 +187,27 @@ begin
   end;
 end;
 
+procedure TMainForm.BuscarLista;
+begin
+   try
+    with FDQueryBuscar,SQL do
+    begin
+      ComboBoxLinea.Clear;
+      Active:=False;
+      Clear;
+      Add('Select Cantidad from Lista where Empleado=:Empleado and Fecha=:Fecha');
+      Params[0].AsString:=ComboEmpleadosLista.Selected.Text;
+      Params[1].AsString:=Fechalista.Data.ToString;
+      Close;
+      Open;
+      S:=Fields[0].AsString;
+    end;
+    except
+    on E:exception do
+    showmessage(e.Message);
+  end;
+end;
+
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
   ShowMessage( DateEdit1.Data.ToString);
@@ -191,6 +226,7 @@ end;
 procedure TMainForm.ComboEmpleadosListaChange(Sender: TObject);
 begin
   ComboEmpListaSelected:=True;
+  ObtenerLista;
 end;
 
 //Crea las tablas en la inicializacion
@@ -200,8 +236,9 @@ begin
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Linea(Nombre TEXT NOT NULL)');
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Empleado(Nombre TEXT,Ganancia TEXT)');
   Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Reparacion(Empleado TEXT,Folio INTEGER,Precio TEXT,Cantidad INTEGER,Descripcion TEXT,Fecha TEXT,Fecha_Hora TEXT)');
-  Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Trabajo(Trabajo TEXT,Informacion TEXT)')
-  end;
+  Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Trabajo(Trabajo TEXT,Informacion TEXT,Tiempo INTEGER)');
+  Conexion.ExecSQL('CREATE TABLE IF NOT EXISTS Lista(Trabajo TEXT,Empleado TEXT,Cantidad TEXT,Fecha DATE)');
+ end;
 //Antes de conectar identifica la base de datos
 procedure TMainForm.ConexionBeforeConnect(Sender: TObject);
 begin
@@ -214,6 +251,11 @@ end;
 procedure TMainForm.DateEdit2Change(Sender: TObject);
 begin
   ObtenerTrabajos;
+end;
+
+procedure TMainForm.FechaListaChange(Sender: TObject);
+begin
+   if ComboEmpListaSelected then  ObtenerLista;
 end;
 
 procedure TMainForm.FechaTrabajosChange(Sender: TObject);
@@ -229,12 +271,12 @@ begin
   { This defines the default active tab at runtime }
   TabControl1.ActiveTab := TabItem1;
   ObtenerLineas;
-
   Fecha:=(formatdatetime('d/m/y', Hoy));
   FechaLista.Date:=Hoy;
   FechaTrabajos.Date:=Hoy;
   ObtenerEmpleadosLista;
   ObtenerEmpleadosTrabajo;
+  ObtenerLista;
 end;
 
 procedure TMainForm.GestureDone(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
@@ -256,6 +298,35 @@ begin
   end;
 end;
 //Pendiente
+Procedure TMainForm.InsertarLista;
+var
+Fecha:TDateTime;
+begin
+   try
+    FDMemART.Close;
+    FDMemArT.Open;
+    with FDQueryBuscar,SQL do
+    begin
+      Fecha:=strtodate(Fechalista.Data.ToString);
+      Active :=  False;
+      Clear;
+      Add('Insert into Linea(Trabajo,Empleado,Cantidad,Fecha) values (:Trabajo,:Empleado,:Cantidad,:Fecha)');
+      Params[0].AsString:=TListViewItem(ListView1.Selected).Text;
+      Params[1].AsString:=ComboEmpleadosLista.Selected.Text;
+      Params[2].AsString:='1';
+      Params[3].AsString:=StrFechaAndroid(Fecha);
+      FDQueryInsertar.ExecSQL
+    end;
+   // Result:=True;
+    except
+    on E:Exception do
+    begin
+      showmessage(E.Message);
+     // Result:=False;
+    end;
+  end;
+end;
+
 procedure TMainForm.InsertarTrabajo;
 var
 Folio:Integer;
@@ -324,7 +395,35 @@ begin
       ShowMessage('No se pudo insertar el artículo '+e.Message);
   end;
 end;
-//Llena la tabla de articulos con base con base a la linea seleccionada
+//Llena la lista de trabajos
+procedure TMainForm.LlenarLista;
+begin
+  try
+    FDMemLista.Close;
+    FDMemLista.Open;
+    with FDQueryBuscar,SQL do
+    begin
+      Active :=  False;
+      Clear;
+      Add('Select Nombre,Informacion,Tiempo from Trabajo');
+      close;
+      Open;
+      while not Eof do
+      begin
+        FDMemLista.Append;
+        (FDMemLista.FieldByName('Nombre') as TIntegerField).AsInteger:= Fields[0].AsInteger;
+        (FDMemLista.FieldByName('Informacion') as TStringField).AsString:= Fields[1].AsString;
+        (FDMemLista.FieldByName('Tiempo') as TStringField).AsString:= Fields[2].AsString;
+         FDMemLista.Post;
+        Next;
+      end;
+    end;
+    except
+    on E:Exception do
+    showmessage(E.Message);
+  end;
+end;
+
 procedure TMainForm.LlenarTabla;
 begin
  try
@@ -352,7 +451,6 @@ begin
         (FDMemART.FieldByName('P_Mayoreo') as TStringField).AsString:= Fields[9].AsString;
         (FDMemART.FieldByName('P_Bolero') as TStringField).AsString:= Fields[10].AsString;
         (FDMemART.FieldByName('P_Especial') as TStringField).AsString:= Fields[11].AsString;
-
         FDMemART.Post;
         Next;
       end;
@@ -494,6 +592,35 @@ begin
     showmessage(e.Message);
   end;
 end;
+procedure TMainForm.ObtenerLista;
+begin
+  try
+    FDMemART.Close;
+    FDMemArT.Open;
+    with FDQueryBuscar,SQL do
+    begin
+      Active :=  False;
+      Clear;
+      Add('Select Trabajo,Cantidad from Lista where Empleado=:Empleado and Fecha=:Fecha');
+      Params[0].AsString:=ComboBoxLinea.Selected.Text;
+      Params[1].AsString:=Fechalista.Data.ToString;;
+      close;
+      Open;
+      while not Eof do
+      begin
+        FDMemART.Append;
+        (FDMemART.FieldByName('Trabajo') as TIntegerField).AsInteger:= Fields[0].AsInteger;
+        (FDMemART.FieldByName('Cantidad') as TStringField).AsString:= Fields[1].AsString;
+        FDMemART.Post;
+        Next;
+      end;
+    end;
+    except
+    on E:Exception do
+    showmessage(E.Message);
+  end;
+end;
+
 procedure TMainForm.ObtenerTrabajos;
 begin
   try
@@ -525,19 +652,53 @@ begin
   end;
 end;
 
+procedure TMainForm.RestarLista;
+begin
+    try
+    FDMemART.Close;
+    FDMemArT.Open;
+    with FDQueryBuscar,SQL do
+    begin
+      Active :=  False;
+      Clear;
+      Add('Update Lista set Cantidad=Cantidad -1 where Empleado=:Empleado and Fecha=:Fecha ');
+      Params[0].AsString:=ComboEmpleadosLista.Selected.Text;
+      Params[1].AsString:=Fechalista.Data.ToString;
+      FDQueryInsertar.ExecSQL
+    end;
+   // Result:=True;
+    except
+    on E:Exception do
+    begin
+      showmessage(E.Message);
+     // Result:=False;
+    end;
+  end;
+end;
+
 //Acciones realizadas al momento de oprimir una celda en el grid
 procedure TMainForm.SpeedButton1Click(Sender: TObject);
 begin
- ShowMessage(TListViewItem(ListView1.Selected).Text);
+ if ComboEmpListaSelected then
+ begin
+  BuscarLista;
+  if S.Equals('') then InsertarLista
+  else SumarLista;
+  ObtenerLista;
+ end
+ else ShowMessage('Seleccione un empleado');
 end;
 
 procedure TMainForm.SpeedButton2Click(Sender: TObject);
-var
-Fecha:string;
 begin
-  Hoy:=Now;
-  Fecha:=(formatdatetime('d/m/y', Hoy));
-  ShowMessage(Fecha);
+  if ComboEmpListaSelected then
+ begin
+  BuscarLista;
+  if S.Equals('') then InsertarLista
+  else RestarLista;
+  ObtenerLista;
+ end
+ else ShowMessage('Seleccione un empleado');
 end;
 
 procedure TMainForm.StringGrid2CellClick(const Column: TColumn;
@@ -545,6 +706,30 @@ procedure TMainForm.StringGrid2CellClick(const Column: TColumn;
 begin
   IDROW_SELECCIONADO:=FDMemART.FieldByName('ID').AsString;
 end;
+procedure TMainForm.SumarLista;
+begin
+    try
+    FDMemART.Close;
+    FDMemArT.Open;
+    with FDQueryBuscar,SQL do
+    begin
+      Active :=  False;
+      Clear;
+      Add('Update Lista set Cantidad=Cantidad +1 where Empleado=:Empleado and Fecha=:Fecha ');
+      Params[0].AsString:=ComboEmpleadosLista.Selected.Text;
+      Params[1].AsString:=Fechalista.Data.ToString;
+      FDQueryInsertar.ExecSQL
+    end;
+   // Result:=True;
+    except
+    on E:Exception do
+    begin
+      showmessage(E.Message);
+     // Result:=False;
+    end;
+  end;
+end;
+
 //Abre la forma de la presentacion de la empresa
 procedure TMainForm.TimerPresentacionTimer(Sender: TObject);
 begin

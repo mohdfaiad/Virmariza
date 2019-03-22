@@ -88,7 +88,9 @@ function DaysPerMonth(AYear, AMonth: Integer): Integer;
 procedure OcultarTeclado;
 {Desactiva el teclado virtual (Android) Es decir que no se mostrara a menos que se enfoque otro edit}
 procedure DesactivarTeclado;
-{Fecha a String}
+{Fecha a String de android}
+function StrFechaAndroid(fecha:TDateTime):String;
+{Fecha y hora a String}
 function StrFecha(fecha:TDateTime):String;
 {Fecha y hora a String}
 function StrFecha_Hora(fecha_Hora: TDateTime):String;
@@ -206,6 +208,11 @@ begin
   finally
     ResStream.Free;
   end;
+end;
+(**********************************************************************)
+function StrFechaAndroid(fecha: TDateTime):String;
+begin
+  Result:=((formatdatetime('y-m-d',fecha)));
 end;
  (**********************************************************************)
 function StrFecha(fecha: TDateTime):String;
