@@ -100,6 +100,8 @@ type
     FDMemTable1Informacion: TStringField;
     FDMemTable1Tiempo: TStringField;
     BindSourceDB2: TBindSourceDB;
+    Cliente: TLabel;
+    Empleado: TLabel;
     procedure GestureDone(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure ConexionBeforeConnect(Sender: TObject);
@@ -128,6 +130,7 @@ type
     procedure btnIngresarClick(Sender: TObject);
     procedure ObtenerFilaTrabajos;
     procedure ObtenerTrabajos;
+    procedure ObtenerTipoTrabajo;
     procedure DateEdit2Change(Sender: TObject);
     procedure ComboEmpleadosListaChange(Sender: TObject);
     procedure FechaTrabajosChange(Sender: TObject);
@@ -188,19 +191,23 @@ begin
 end;
 
 procedure TMainForm.BuscarLista;
+var
+Fecha:TDateTime;
 begin
    try
     with FDQueryBuscar,SQL do
     begin
-      ComboBoxLinea.Clear;
+      Fecha:=strtodate(Fechalista.Data.ToString);
       Active:=False;
       Clear;
-      Add('Select Cantidad from Lista where Empleado=:Empleado and Fecha=:Fecha');
+      Add('Select Cantidad from Lista where Empleado=:Empleado and Fecha=:Fecha and Trabajo=:Trabajo');
       Params[0].AsString:=ComboEmpleadosLista.Selected.Text;
-      Params[1].AsString:=Fechalista.Data.ToString;
+      Params[1].AsString:=StrFechaAndroid(Fecha);
+      Params[2].AsString:=TListViewItem(ListView1.Selected).Text;
       Close;
       Open;
       S:=Fields[0].AsString;
+      ShowMessage(S);
     end;
     except
     on E:exception do
@@ -270,13 +277,16 @@ begin
   Hoy:=Now;
   { This defines the default active tab at runtime }
   TabControl1.ActiveTab := TabItem1;
-  ObtenerLineas;
+  //Establece la fecha de hoy en los buscadores de fecha
   Fecha:=(formatdatetime('d/m/y', Hoy));
   FechaLista.Date:=Hoy;
   FechaTrabajos.Date:=Hoy;
+  //Obtiene todos los datos nesesarios
+  ObtenerLineas;
   ObtenerEmpleadosLista;
   ObtenerEmpleadosTrabajo;
-  ObtenerLista;
+  ObtenerTrabajos;
+  ObtenerTipoTrabajo;
 end;
 
 procedure TMainForm.GestureDone(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
@@ -303,19 +313,21 @@ var
 Fecha:TDateTime;
 begin
    try
-    FDMemART.Close;
-    FDMemArT.Open;
-    with FDQueryBuscar,SQL do
+    with FDQueryInsertar,SQL do
     begin
       Fecha:=strtodate(Fechalista.Data.ToString);
+      ShowMessage(FechaLista.Data.ToString);
       Active :=  False;
       Clear;
-      Add('Insert into Linea(Trabajo,Empleado,Cantidad,Fecha) values (:Trabajo,:Empleado,:Cantidad,:Fecha)');
+      Add('Insert into Lista(Trabajo,Empleado,Cantidad,Fecha) values (:Trabajo,:Empleado,:Cantidad,:Fecha)');
       Params[0].AsString:=TListViewItem(ListView1.Selected).Text;
       Params[1].AsString:=ComboEmpleadosLista.Selected.Text;
       Params[2].AsString:='1';
       Params[3].AsString:=StrFechaAndroid(Fecha);
-      FDQueryInsertar.ExecSQL
+      ShowMessage(StrFechaAndroid(Fecha));
+      FDQueryInsertar.ExecSQL;
+      ToastImagen('Insertado',false,MainForm.LogoVirma.Bitmap,$FFFFFF,$FF000000);
+
     end;
    // Result:=True;
     except
@@ -595,23 +607,54 @@ end;
 procedure TMainForm.ObtenerLista;
 begin
   try
-    FDMemART.Close;
-    FDMemArT.Open;
+    FDMemFilaTrabajo.Close;
+    FDMemFilaTrabajo.Open;
     with FDQueryBuscar,SQL do
     begin
       Active :=  False;
       Clear;
-      Add('Select Trabajo,Cantidad from Lista where Empleado=:Empleado and Fecha=:Fecha');
-      Params[0].AsString:=ComboBoxLinea.Selected.Text;
-      Params[1].AsString:=Fechalista.Data.ToString;;
+      Add('Select Trabajo,Cantidad,Fecha from Lista where Empleado=:Empleado and Fecha=:Fecha');
+      Params[0].AsString:=ComboEmpleadosLista.Selected.Text;
+      Params[1].AsString:=Fechalista.Data.ToString;
+      close;
+      Open;
+      ShowMessage(Fields[0].AsString);
+      ShowMessage(Fields[1].AsString);
+      ShowMessage(Fields[2].AsString);
+      while not Eof do
+      begin
+        FDMemFilaTrabajo.Append;
+        (FDMemFilaTrabajo.FieldByName('Trabajo') as TStringField).AsString:= Fields[0].AsString;
+        (FDMemFilaTrabajo.FieldByName('Cantidad') as TIntegerField).AsInteger:= Fields[1].AsInteger;
+        FDMemFilaTrabajo.Post;
+        Next;
+      end;
+
+    end;
+    except
+    on E:Exception do
+    showmessage(E.Message);
+  end;
+end;
+
+procedure TMainForm.ObtenerTipoTrabajo;
+begin
+  try
+    FDMemLista.Close;
+    FDMemLista.Open;
+    with FDQueryBuscar,SQL do
+    begin
+      Active :=  False;
+      Clear;
+      Add('Select Trabajo,Informacion from Trabajo ');
       close;
       Open;
       while not Eof do
       begin
-        FDMemART.Append;
-        (FDMemART.FieldByName('Trabajo') as TIntegerField).AsInteger:= Fields[0].AsInteger;
-        (FDMemART.FieldByName('Cantidad') as TStringField).AsString:= Fields[1].AsString;
-        FDMemART.Post;
+        FDMemLista.Append;
+        (FDMemLista.FieldByName('Trabajo') as TStringField).AsString:= Fields[0].AsString;
+        (FDMemLista.FieldByName('Informacion') as TStringField).AsString:= Fields[1].AsString;
+         FDMemLista.Post;
         Next;
       end;
     end;
@@ -691,6 +734,25 @@ end;
 
 procedure TMainForm.SpeedButton2Click(Sender: TObject);
 begin
+ try
+    with FDQueryBuscar,SQL do
+    begin
+      Active :=  False;
+      Clear;
+      Add('Select Trabajo,Cantidad,Fecha from Lista');// where Empleado=:Empleado and Fecha=:Fecha');
+      //Params[0].AsString:=ComboEmpleadosLista.Selected.Text;
+      //Params[1].AsString:=Fechalista.Data.ToString;
+      close;
+      Open;
+      ShowMessage(Fields[0].AsString);
+      ShowMessage(Fields[1].AsString);
+      ShowMessage(Fields[2].AsString);
+    end;
+    except
+    on E:Exception do
+    showmessage(E.Message);
+  end;
+{
   if ComboEmpListaSelected then
  begin
   BuscarLista;
@@ -698,7 +760,7 @@ begin
   else RestarLista;
   ObtenerLista;
  end
- else ShowMessage('Seleccione un empleado');
+ else ShowMessage('Seleccione un empleado');   }
 end;
 
 procedure TMainForm.StringGrid2CellClick(const Column: TColumn;
@@ -707,20 +769,22 @@ begin
   IDROW_SELECCIONADO:=FDMemART.FieldByName('ID').AsString;
 end;
 procedure TMainForm.SumarLista;
+var
+Fecha:TDateTime;
 begin
     try
-    FDMemART.Close;
-    FDMemArT.Open;
-    with FDQueryBuscar,SQL do
+    Fecha:=strtodate(Fechalista.Data.ToString);
+    with FDQueryInsertar,SQL do
     begin
       Active :=  False;
       Clear;
       Add('Update Lista set Cantidad=Cantidad +1 where Empleado=:Empleado and Fecha=:Fecha ');
       Params[0].AsString:=ComboEmpleadosLista.Selected.Text;
-      Params[1].AsString:=Fechalista.Data.ToString;
+      Params[1].AsString:= StrFechaAndroid(Fecha);
       FDQueryInsertar.ExecSQL
     end;
    // Result:=True;
+    ToastImagen('Sumado',false,MainForm.LogoVirma.Bitmap,$FFFFFF,$FF000000);
     except
     on E:Exception do
     begin

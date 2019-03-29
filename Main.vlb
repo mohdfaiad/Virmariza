@@ -81,7 +81,7 @@ Coordinates=610,90,92,51
 Coordinates=146,337,70,33
 
 [FdMemArt]
-Coordinates=1357,180,65,33
+Coordinates=1432,190,65,33
 Visible=True
 
 []
@@ -104,7 +104,7 @@ Coordinates=67,318,75,33
 Coordinates=280,80,82,33
 
 [BindSourceDB1]
-Coordinates=1282,170,92,285
+Coordinates=1357,180,92,285
 
 [StringGrid2]
 Coordinates=0,0,70,159
@@ -177,8 +177,8 @@ Coordinates=440,410,94,33
 Visible=False
 
 [FDMemFilaTrabajo]
-Coordinates=833,483,106,33
-Visible=False
+Coordinates=970,430,106,33
+Visible=True
 
 [FDMemTrabajosDescripcion]
 Coordinates=768,419,153,33
@@ -237,4 +237,10 @@ Coordinates=704,625,121,33
 
 [BindSourceDB2]
 Coordinates=400,590,92,123
+
+[Empleado]
+Coordinates=53,502,63,51
+
+[Cliente]
+Coordinates=457,334,48,51
 

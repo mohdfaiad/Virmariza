@@ -568,9 +568,9 @@ object MainForm: TMainForm
         Viewport.Height = 228.000000000000000000
       end
       object ComboEmpleadosLista: TComboBox
-        Position.X = 328.000000000000000000
+        Position.X = 456.000000000000000000
         Position.Y = 7.000000000000000000
-        Size.Width = 385.000000000000000000
+        Size.Width = 257.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
@@ -599,6 +599,18 @@ object MainForm: TMainForm
         Size.Height = 298.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 5
+      end
+      object Cliente: TLabel
+        Position.X = 296.000000000000000000
+        Position.Y = 15.000000000000000000
+        Text = 'Cliente'
+        TabOrder = 6
+      end
+      object Empleado: TLabel
+        Position.X = 176.000000000000000000
+        Position.Y = 15.000000000000000000
+        Text = 'Empleado'
+        TabOrder = 7
       end
     end
     object TabItem4: TTabItem
@@ -711,8 +723,8 @@ object MainForm: TMainForm
   end
   object FDQueryInsertar: TFDQuery
     Connection = Conexion
-    Left = 504
-    Top = 272
+    Left = 496
+    Top = 200
   end
   object FDQueryActualizar: TFDQuery
     Connection = Conexion
@@ -727,8 +739,8 @@ object MainForm: TMainForm
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 408
-    Top = 256
+    Left = 424
+    Top = 208
     object FdMemArtID: TIntegerField
       FieldName = 'ID'
     end
@@ -872,8 +884,8 @@ object MainForm: TMainForm
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 512
-    Top = 208
+    Left = 560
+    Top = 144
     object FDMemFilaTrabajoTrabajo: TStringField
       FieldName = 'Trabajo'
     end
@@ -889,8 +901,8 @@ object MainForm: TMainForm
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 440
-    Top = 208
+    Left = 512
+    Top = 72
     object FDMemTrabajosDescripcion: TStringField
       FieldName = 'Descripcion'
     end
@@ -924,8 +936,8 @@ object MainForm: TMainForm
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 490
-    Top = 144
+    Left = 426
+    Top = 80
     object FDMemTable1Trabajo: TStringField
       FieldName = 'Trabajo'
     end
